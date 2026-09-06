@@ -1,6 +1,6 @@
 {
-  "id": "ba0bd2a9-358e-4b23-81f2-76ce326e1375",
-  "prevId": "0cc0a470-9e71-4e6c-ae72-c9682913be9e",
+  "id": "51d9bfa2-43e7-4fa2-bdde-5a84ce64140c",
+  "prevId": "882fc930-a704-48f0-b21c-85d36fe2c577",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -5870,7 +5870,7 @@
           "type": "boolean",
           "primaryKey": false,
           "notNull": true,
-          "default": true
+          "default": false
         },
         "allow_unlinked_people": {
           "name": "allow_unlinked_people",
@@ -6938,7 +6938,7 @@
       "checkConstraints": {
         "chat_publications_state_check": {
           "name": "chat_publications_state_check",
-          "value": "\"chat_publications\".\"state\" in ('pending', 'streaming', 'published', 'retry', 'failed', 'cancelled')"
+          "value": "\"chat_publications\".\"state\" in ('pending', 'streaming', 'published', 'retry', 'delivery_unknown', 'failed', 'cancelled')"
         }
       },
       "isRLSEnabled": false
