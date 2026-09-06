@@ -258,6 +258,7 @@ import {
   WORKTREE_INSTANCE_ROOT_METADATA_KEY,
 } from "./workspace-instance-cleanup.js";
 import { issueService } from "./issues.js";
+import { resolveChatRunPresentationAuthorizationReason } from "./chat-run-publications.js";
 import { projectService } from "./projects.js";
 import {
   authorizationService,
@@ -624,6 +625,7 @@ const INTERACTION_CONTINUATION_INFRA_MAX_ATTEMPTS = 3;
 const RESOLVED_INTERACTION_CONTINUATION_STATUSES = new Set([
   "accepted",
   "answered",
+  "cancelled",
   "rejected",
 ]);
 const WORKSPACE_VALIDATION_FAILURE_CODE = "workspace_validation_failed";
@@ -1310,7 +1312,8 @@ export async function resolveExecutionRunAdapterConfig(input: {
     input.trustPreset?.kind === "low_trust_review"
       ? (input.trustPreset.boundary.allowedSecretBindingIds ?? [])
       : undefined;
-  const allowTrustedEnvProjection = input.trustPreset?.kind !== "low_trust_review";
+  const allowTrustedEnvProjection =
+    input.trustPreset?.kind !== "low_trust_review";
   if (input.trustPreset?.kind === "low_trust_review") {
     assertLowTrustEnvConfigAllowed(environmentEnv, "environment.env");
     assertLowTrustEnvConfigAllowed(executionRunConfig.env, "agent.env");
@@ -1321,7 +1324,8 @@ export async function resolveExecutionRunAdapterConfig(input: {
   const requiredScopedBindingsConfigured = requiredScopedEnvBinding
     ? requiredScopedEnvBinding.keys.some(
         (key) =>
-          (allowTrustedEnvProjection && typeof input.trustedEnvProjection?.[key] === "string") ||
+          (allowTrustedEnvProjection &&
+            typeof input.trustedEnvProjection?.[key] === "string") ||
           (requiredScopedEnvBinding.consumerScopes.includes("agent") &&
             isConfiguredEnvBindingValue(agentEnv[key])) ||
           (requiredScopedEnvBinding.consumerScopes.includes("project") &&
@@ -1582,9 +1586,9 @@ export async function resolveExecutionRunAdapterConfig(input: {
     }
   }
   if (
-    allowTrustedEnvProjection
-    && input.trustedEnvProjection
-    && Object.keys(input.trustedEnvProjection).length > 0
+    allowTrustedEnvProjection &&
+    input.trustedEnvProjection &&
+    Object.keys(input.trustedEnvProjection).length > 0
   ) {
     resolvedConfig.env = {
       ...parseObject(resolvedConfig.env),
@@ -3289,6 +3293,8 @@ interface WakeupOptions {
     statuses: string[];
     assigneeAgentId: string;
   };
+  /** Keep causally distinct external chat continuations out of an existing run. */
+  allowRunCoalescing?: boolean;
 }
 
 type UsageTotals = {
@@ -4104,19 +4110,22 @@ export async function buildPaperclipRuntimeMcpServers(input: {
   const [runIdentity] = await input.db
     .select({ responsibleUserId: heartbeatRuns.responsibleUserId })
     .from(heartbeatRuns)
-    .where(and(
-      eq(heartbeatRuns.id, input.runId),
-      eq(heartbeatRuns.companyId, input.agent.companyId),
-      eq(heartbeatRuns.agentId, input.agent.id),
-    ))
+    .where(
+      and(
+        eq(heartbeatRuns.id, input.runId),
+        eq(heartbeatRuns.companyId, input.agent.companyId),
+        eq(heartbeatRuns.agentId, input.agent.id),
+      ),
+    )
     .limit(1);
-  const resolvedInstalledConnections = await filterResolvedGitHubConnectionsForRun({
-    db: input.db,
-    companyId: input.agent.companyId,
-    agentId: input.agent.id,
-    responsibleUserId: runIdentity?.responsibleUserId ?? null,
-    connections: effective.installedConnections,
-  });
+  const resolvedInstalledConnections =
+    await filterResolvedGitHubConnectionsForRun({
+      db: input.db,
+      companyId: input.agent.companyId,
+      agentId: input.agent.id,
+      responsibleUserId: runIdentity?.responsibleUserId ?? null,
+      connections: effective.installedConnections,
+    });
   const permittedConnectionIds = new Set([
     ...effective.entries
       .filter((entry) => entry.effect === "include" && entry.connectionId)
@@ -4587,30 +4596,36 @@ export async function createManagedMcpRunConfig(input: {
   const [runIdentity] = await input.db
     .select({ responsibleUserId: heartbeatRuns.responsibleUserId })
     .from(heartbeatRuns)
-    .where(and(
-      eq(heartbeatRuns.id, input.runId),
-      eq(heartbeatRuns.companyId, input.agent.companyId),
-      eq(heartbeatRuns.agentId, input.agent.id),
-    ))
+    .where(
+      and(
+        eq(heartbeatRuns.id, input.runId),
+        eq(heartbeatRuns.companyId, input.agent.companyId),
+        eq(heartbeatRuns.agentId, input.agent.id),
+      ),
+    )
     .limit(1);
-  const resolvedAvailableInstalls = await filterResolvedGitHubConnectionsForRun({
-    db: input.db,
-    companyId: input.agent.companyId,
-    agentId: input.agent.id,
-    responsibleUserId: runIdentity?.responsibleUserId ?? null,
-    connections: installRows.filter(
-      (install) =>
-        install.enabled &&
-        install.status === "active" &&
-        !["degraded", "failed", "error", "missing_secret"].includes(
-          install.healthStatus,
-        ),
-    ).map((install) => ({
-      id: install.connectionId,
-      config: install.config,
-      transportConfig: install.transportConfig,
-    })),
-  });
+  const resolvedAvailableInstalls = await filterResolvedGitHubConnectionsForRun(
+    {
+      db: input.db,
+      companyId: input.agent.companyId,
+      agentId: input.agent.id,
+      responsibleUserId: runIdentity?.responsibleUserId ?? null,
+      connections: installRows
+        .filter(
+          (install) =>
+            install.enabled &&
+            install.status === "active" &&
+            !["degraded", "failed", "error", "missing_secret"].includes(
+              install.healthStatus,
+            ),
+        )
+        .map((install) => ({
+          id: install.connectionId,
+          config: install.config,
+          transportConfig: install.transportConfig,
+        })),
+    },
+  );
   const availableInstalledConnectionIds = new Set(
     resolvedAvailableInstalls.map((install) => install.id),
   );
@@ -10451,8 +10466,9 @@ export function heartbeatService(
       readNonEmptyString(context.issueId) ?? readNonEmptyString(context.taskId);
     const resolveGitAuth = createGitRemoteAuthProvider(db, agent.companyId, {
       issueId,
-      responsibleUserId: readNonEmptyString(context.responsibleUserId)
-        ?? readNonEmptyString(context.responsible_user_id),
+      responsibleUserId:
+        readNonEmptyString(context.responsibleUserId) ??
+        readNonEmptyString(context.responsible_user_id),
       agentId: agent.id,
     });
     const contextProjectId = readNonEmptyString(context.projectId);
@@ -10711,8 +10727,9 @@ export function heartbeatService(
       readNonEmptyString(context.issueId) ?? readNonEmptyString(context.taskId);
     const resolveGitAuth = createGitRemoteAuthProvider(db, agent.companyId, {
       issueId,
-      responsibleUserId: readNonEmptyString(context.responsibleUserId)
-        ?? readNonEmptyString(context.responsible_user_id),
+      responsibleUserId:
+        readNonEmptyString(context.responsibleUserId) ??
+        readNonEmptyString(context.responsible_user_id),
       agentId: agent.id,
     });
     const { additionalWorkspaces, warnings, failures } =
@@ -18810,12 +18827,16 @@ export function heartbeatService(
         issueId,
         explicitRunScopedSkillKeys: runScopedMentionedSkillKeys,
       });
-      const githubRunAuth = await createGitRemoteAuthProvider(db, agent.companyId, {
-        issueId,
-        heartbeatRunId: run.id,
-        responsibleUserId,
-        agentId: agent.id,
-      })("https://github.com/paperclipai/credential-probe.git");
+      const githubRunAuth = await createGitRemoteAuthProvider(
+        db,
+        agent.companyId,
+        {
+          issueId,
+          heartbeatRunId: run.id,
+          responsibleUserId,
+          agentId: agent.id,
+        },
+      )("https://github.com/paperclipai/credential-probe.git");
       const { resolvedConfig, secretKeys, secretManifest } =
         await resolveExecutionRunAdapterConfig({
           companyId: agent.companyId,
@@ -18834,10 +18855,16 @@ export function heartbeatService(
           routineEnv: routineEnvContext.env,
           secretsSvc,
           trustPreset,
-          ...(githubRunAuth ? {
-            trustedEnvProjection: githubRunAuth.env,
-            trustedEnvSecretKeys: ["GH_TOKEN", "GITHUB_TOKEN", GIT_CREDENTIAL_TOKEN_ENV_KEY],
-          } : {}),
+          ...(githubRunAuth
+            ? {
+                trustedEnvProjection: githubRunAuth.env,
+                trustedEnvSecretKeys: [
+                  "GH_TOKEN",
+                  "GITHUB_TOKEN",
+                  GIT_CREDENTIAL_TOKEN_ENV_KEY,
+                ],
+              }
+            : {}),
           requiredScopedEnvBinding: pushCapabilityPreflightRequired
             ? {
                 keys: [...PUSH_CAPABILITY_ENV_KEYS],
@@ -22042,10 +22069,22 @@ export function heartbeatService(
               presentationDecision.commentAction === "create" &&
               resolved.text
             ) {
+              // The presentation resolver exposes only the final assistant
+              // surface selected from completed final messages or accepted
+              // semantic results. For an exactly bound external-chat run,
+              // authorize that narrow presentation as the provider reply;
+              // ordinary internal runs retain the private default.
+              const presentationAuthorizationReason =
+                await resolveChatRunPresentationAuthorizationReason(db, {
+                  companyId: livenessRun.companyId,
+                  issueId,
+                  runId: livenessRun.id,
+                });
               const comment = await issuesSvc.addComment(
                 issueId,
                 resolved.text,
                 { agentId: agent.id, runId: livenessRun.id },
+                { authorizationReason: presentationAuthorizationReason },
               );
               presentationDecision = {
                 ...presentationDecision,
@@ -22070,7 +22109,7 @@ export function heartbeatService(
                   bodySnippet: comment.body.slice(0, 120),
                   identifier: issueRef?.identifier ?? null,
                   issueTitle: issueRef?.title ?? null,
-                  authorizationReason: "internal_agent_write",
+                  authorizationReason: presentationAuthorizationReason,
                   source: "run_presentation_resolver",
                   presentationSource: presentationDecision.chosenSource,
                 },
@@ -24762,6 +24801,7 @@ export function heartbeatService(
             : activeExecutionRun;
 
           if (
+            opts.allowRunCoalescing !== false &&
             isSameExecutionAgent &&
             !shouldDeferFollowupWake &&
             !shouldQueueFollowupForRunningWake &&
@@ -24827,7 +24867,7 @@ export function heartbeatService(
               .limit(1)
               .then((rows) => rows[0] ?? null);
 
-            if (existingDeferred) {
+            if (existingDeferred && opts.allowRunCoalescing !== false) {
               const existingDeferredPayload = parseObject(
                 existingDeferred.payload,
               );
@@ -25159,11 +25199,13 @@ export function heartbeatService(
         wakeCommentId,
       });
     const rawCoalescedTarget =
-      sameScopeQueuedRun ??
-      sameScopeScheduledRetryRun ??
-      (shouldQueueFollowupForRunningWake
+      opts.allowRunCoalescing === false
         ? null
-        : (sameScopeRunningRun ?? null));
+        : (sameScopeQueuedRun ??
+          sameScopeScheduledRetryRun ??
+          (shouldQueueFollowupForRunningWake
+            ? null
+            : (sameScopeRunningRun ?? null)));
 
     const coalescedTargetRun = filterZombieCoalesceTarget(
       rawCoalescedTarget,
