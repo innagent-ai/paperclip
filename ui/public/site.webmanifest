@@ -1,7 +1,7 @@
 {
   "id": "/",
-  "name": "Paperclip",
-  "short_name": "Paperclip",
+  "name": "InnAgent",
+  "short_name": "InnAgent",
   "description": "AI-powered project management and agent coordination platform",
   "start_url": "/",
   "scope": "/",
