@@ -2643,6 +2643,21 @@ async function queueResolvedInteractionContinuationWakeup(input: {
       publication.idempotencyKey ===
       `interaction:${input.interaction.id}:${publication.endpointId}`,
   );
+  const genericRejectionReason =
+    !planReviewInteraction &&
+    !nativeCompletionReview &&
+    input.interaction.status === "rejected" &&
+    (input.interaction.kind === "request_confirmation" ||
+      input.interaction.kind === "request_checkbox_confirmation")
+      ? readNonEmptyString(readObject(input.interaction.result).reason)
+      : null;
+  const rejectionAgentMessage = genericRejectionReason
+    ? {
+        text: genericRejectionReason,
+        source: "interaction_rejection",
+        sessionId: input.interaction.id,
+      }
+    : null;
   void input.heartbeat
     .wakeup(input.issue.assigneeAgentId, {
       source: "automation",
@@ -2661,6 +2676,9 @@ async function queueResolvedInteractionContinuationWakeup(input: {
         ...(toolAction ? { toolAction } : {}),
         ...(secretProposal ? { secretProposal } : {}),
         ...(itemVerdicts ? { itemVerdicts, newlyResolvedItemIds } : {}),
+        ...(rejectionAgentMessage
+          ? { paperclipAgentMessage: rejectionAgentMessage }
+          : {}),
         ...(reviewPathContext ?? {}),
         mutation: "interaction",
       },
@@ -2684,6 +2702,9 @@ async function queueResolvedInteractionContinuationWakeup(input: {
         ...(toolAction ? { toolAction } : {}),
         ...(secretProposal ? { secretProposal } : {}),
         ...(itemVerdicts ? { itemVerdicts, newlyResolvedItemIds } : {}),
+        ...(rejectionAgentMessage
+          ? { paperclipAgentMessage: rejectionAgentMessage }
+          : {}),
         ...(reviewPathContext ?? {}),
         wakeReason: "issue_commented",
         source: input.source,

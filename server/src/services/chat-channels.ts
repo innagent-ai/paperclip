@@ -7228,7 +7228,7 @@ export function chatChannelService(db: Db, options: ChatChannelServiceOptions) {
               ? `Shared ${message.attachments.length} Microsoft Teams file reference${message.attachments.length === 1 ? "" : "s"}.${providerUrl ? ` Open in Microsoft Teams: ${providerUrl}` : ""}`
               : `Shared ${message.attachments.length} file${message.attachments.length === 1 ? "" : "s"}.`
             : "Sent an empty message.");
-        let comment!: typeof issueComments.$inferSelect;
+        let comment!: { id: string };
         await taskTx
           .update(chatEndpoints)
           .set({

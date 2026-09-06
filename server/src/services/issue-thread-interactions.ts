@@ -2452,7 +2452,20 @@ export function issueThreadInteractionService(
         tx,
         rejectedInteraction,
       );
-      if (isNativeCompletionReview(lockedCurrent)) {
+      const rejectedPlanNeedsRevision =
+        lockedCurrent.kind === "request_confirmation" &&
+        readAcceptedPlanConfirmationTarget(
+          lockedCurrent.payload,
+          issueContext.id,
+        )?.key === "plan";
+      const shouldResumeReviewedIssue =
+        issueContext.status === "in_review" &&
+        (lockedCurrent.continuationPolicy === "wake_assignee" ||
+          rejectedPlanNeedsRevision);
+      if (
+        isNativeCompletionReview(lockedCurrent) ||
+        shouldResumeReviewedIssue
+      ) {
         await issueService(db).update(
           args.issue.id,
           {
