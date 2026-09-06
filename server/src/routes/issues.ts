@@ -13530,6 +13530,7 @@ export function issueRoutes(
         authorType: req.body.authorType ?? (actor.actorType === "agent" ? "agent" : "user"),
         presentation: commentPresentation,
         metadata: req.body.metadata ?? null,
+        attachmentIds: req.body.attachmentIds,
         sourceTrust,
       };
       let txResult: { comment: Awaited<ReturnType<typeof svc.addComment>>; issue: NonNullable<Awaited<ReturnType<typeof svc.update>>> };
@@ -13614,18 +13615,30 @@ export function issueRoutes(
         requestedByActorId: actor.actorId,
       });
     } else {
-      comment = await svc.addComment(id, req.body.body, {
-        agentId: actor.agentId ?? undefined,
-        userId: actor.actorType === "user" ? actor.actorId : undefined,
-        runId: actor.runId,
-        onBehalfOfUserId: authenticatedActorResponsibleUserId(req),
-      }, {
+      const commentOptions = {
         authorType: req.body.authorType ?? (actor.actorType === "agent" ? "agent" : "user"),
         presentation: commentPresentation,
         metadata: req.body.metadata ?? null,
+        attachmentIds: req.body.attachmentIds,
         authorizationReason: commentAuthorizationReason,
         sourceTrust: await sourceTrustForActorWrite(currentIssue, actor),
-      });
+      };
+      const add = (dbOrTx: Db = db) =>
+        svc.addComment(
+          id,
+          req.body.body,
+          {
+            agentId: actor.agentId ?? undefined,
+            userId: actor.actorType === "user" ? actor.actorId : undefined,
+            runId: actor.runId,
+            onBehalfOfUserId: authenticatedActorResponsibleUserId(req),
+          },
+          commentOptions,
+          dbOrTx,
+        );
+      comment = req.body.attachmentIds?.length
+        ? await db.transaction(async (tx) => add(tx as unknown as Db))
+        : await add();
     }
 
     await issueReferencesSvc.syncComment(comment.id);

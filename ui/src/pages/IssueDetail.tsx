@@ -7262,7 +7262,11 @@ export function IssueDetail() {
         {/* Parent chain breadcrumb (redesign: rendered inside the thread viewport) */}
         {taskChatShellEnabled ? null : ancestorsNav}
 
-        <ExternallyConnectedTaskBanner companyId={issue.companyId} issueId={issue.id} />
+        <ExternallyConnectedTaskBanner
+          attachments={attachments ?? []}
+          companyId={issue.companyId}
+          issueId={issue.id}
+        />
 
         {issue.hiddenAt && (
           <div
