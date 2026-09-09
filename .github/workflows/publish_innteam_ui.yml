@@ -1,0 +1,80 @@
+# Constrói a UI do InnTeam (Paperclip com a IDV do InnAgent) e a devolve como artifact.
+#
+# Por que existe: o build local na manager01 foi morto por falta de memória em 8 das 11
+# tentativas de 08-09/09, mesmo com --memory, NODE_OPTIONS=1536 e nice -n 19. O runner
+# tem a folga que ela não tem.
+#
+# Diferente dos outros dois motores, aqui NÃO se publica imagem: a produção roda o pacote
+# npm do Paperclip e o ExecStartPre substitui a `ui-dist` por cima. Então o que viaja é a
+# pasta buildada, não um tarball de imagem — mais leve que o InnChat e o InnTask.
+name: Publish InnTeam UI
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Branch já com o tema aplicado (ex.: innagent-2026.817.0)'
+        required: true
+      tag:
+        description: 'Versão do Paperclip (ex.: 2026.817.0)'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          target: production
+          build-args: PAPERCLIP_BUILD_VERSION=${{ inputs.tag }}-innagent
+          push: false
+          load: true
+          tags: paperclip-innagent:${{ inputs.tag }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Extrair a ui-dist
+        run: |
+          cid=$(docker create paperclip-innagent:${{ inputs.tag }})
+          docker cp "$cid:/app/ui/dist" ./ui-dist
+          docker rm "$cid" > /dev/null
+          test -f ./ui-dist/index.html || { echo "ui-dist nao veio na imagem"; exit 1; }
+
+      # Guarda do tema: sem isto o build fica verde entregando uma UI que compilou bem e
+      # não tem a IDV. As três camadas que o InnTeam exigiu — tokens, paleta do Tailwind
+      # e os hexes cravados em status-colors — são conferidas no CSS compilado.
+      - name: Prova — a IDV do InnAgent está no CSS compilado
+        run: |
+          css=$(cat ./ui-dist/assets/*.css)
+          falhas=0
+          checa() {
+            if echo "$css" | grep -qiF "$2"; then echo "ok   $1"
+            else echo "FALTA $1 ($2)"; falhas=$((falhas+1)); fi
+          }
+          checa "fonte Lato"          "Lato"
+          checa "tinta da marca"      "#292B2F"
+          checa "fundo da marca"      "#EEF3F9"
+          # as cores de fábrica não podem sobreviver ao tema
+          for velha in "#F99C00" "#FB2C36" "#00A5EF" "#F59E0B" "#2563EB"; do
+            if echo "$css" | grep -qiF "$velha"; then
+              echo "SOBROU cor de fabrica: $velha"; falhas=$((falhas+1))
+            fi
+          done
+          test "$falhas" = "0" || { echo "$falhas problema(s) no tema"; exit 1; }
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: innteam-ui-${{ inputs.tag }}
+          path: ui-dist
+          retention-days: 5
