@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ArrowUpDown, CheckCircle2, Inbox, Layers, ListFilter } from "lucide-react";
@@ -101,10 +102,10 @@ function thumb(hex: string, label: string): string {
 }
 
 const IMAGES = [
-  { assetId: thumb("#0ea5e9", "1"), alt: "screenshot 1" },
-  { assetId: thumb("#8b5cf6", "2"), alt: "screenshot 2" },
-  { assetId: thumb("#f43f5e", "3"), alt: "screenshot 3" },
-  { assetId: thumb("#f59e0b", "4"), alt: "screenshot 4" },
+  { assetId: thumb("#469BFF", "1"), alt: "screenshot 1" },
+  { assetId: thumb("#2A81E4", "2"), alt: "screenshot 2" },
+  { assetId: thumb("#ED4E4B", "3"), alt: "screenshot 3" },
+  { assetId: thumb("#B0C000", "4"), alt: "screenshot 4" },
 ];
 
 const POPULATED: AttentionItem[] = [
@@ -201,9 +202,9 @@ const ACTIVITY_OFFSETS: Record<string, number> = {
   "budget-1": NOW - 40 * DAY,
 };
 const PROJECTS: Record<string, AttentionItem["project"]> = {
-  "appr-1": { id: "proj-alpha", name: "Alpha", urlKey: "alpha", color: "#0f766e", icon: "rocket" },
-  "intx-1": { id: "proj-alpha", name: "Alpha", urlKey: "alpha", color: "#0f766e", icon: "rocket" },
-  "review-1": { id: "proj-beta", name: "Beta", urlKey: "beta", color: "#7c3aed", icon: "layers" },
+  "appr-1": { id: "proj-alpha", name: "Alpha", urlKey: "alpha", color: "#0064C4", icon: "rocket" },
+  "intx-1": { id: "proj-alpha", name: "Alpha", urlKey: "alpha", color: "#0064C4", icon: "rocket" },
+  "review-1": { id: "proj-beta", name: "Beta", urlKey: "beta", color: "#0D6DCF", icon: "layers" },
 };
 const DETAILS: Record<string, AttentionItem["detail"]> = {
   "recov-1": { kind: "generic", summaryExcerpt: "Agent has not produced output in 40 minutes.", images: [] },
@@ -237,7 +238,7 @@ const SHOWCASE: AttentionItem[] = [
         { id: "approve", label: "Approve plan", description: null },
         { id: "request_changes", label: "Request changes", description: null },
       ],
-      project: { id: "proj-alpha", name: "Alpha", urlKey: "alpha", color: "#0f766e", icon: "rocket" },
+      project: { id: "proj-alpha", name: "Alpha", urlKey: "alpha", color: "#0064C4", icon: "rocket" },
     }),
     activityAt: new Date(NOW - 20 * 60 * 1000).toISOString(),
     detail: { kind: "plan_approval", issueTitle: "Attention home", planTitle: "Row/card redesign — 8 sections", summaryExcerpt: null, images: [IMAGES[1]] },
@@ -251,7 +252,7 @@ const SHOWCASE: AttentionItem[] = [
         { id: "approve", label: "Approve", description: null },
         { id: "reject", label: "Reject", description: null },
       ],
-      project: { id: "proj-beta", name: "Beta", urlKey: "beta", color: "#7c3aed", icon: "layers" },
+      project: { id: "proj-beta", name: "Beta", urlKey: "beta", color: "#0D6DCF", icon: "layers" },
     }),
     activityAt: new Date(NOW - 40 * 60 * 1000).toISOString(),
     detail: { kind: "confirmation", promptExcerpt: "Ship v2026.707.0 changelog to the public page?", isPlanTarget: false, images: [] },
@@ -299,7 +300,7 @@ const IMAGE_ROWS: AttentionItem[] = [
   {
     ...item("img-review", "review", "medium", "PR ready for review: attention feed endpoint", "In-review issue is waiting on a human reviewer.", {
       inlineResolvable: false,
-      project: { id: "proj-beta", name: "Beta", urlKey: "beta", color: "#7c3aed", icon: "layers" },
+      project: { id: "proj-beta", name: "Beta", urlKey: "beta", color: "#0D6DCF", icon: "layers" },
     }),
     activityAt: new Date(NOW - 30 * 60 * 1000).toISOString(),
     detail: { kind: "generic", summaryExcerpt: "5 files changed · +212 / −41", images: [IMAGES[0], IMAGES[1], IMAGES[2], IMAGES[3], IMAGES[0]] },
@@ -309,7 +310,7 @@ const IMAGE_ROWS: AttentionItem[] = [
       inlineResolvable: true,
       subject: { kind: "interaction", id: "intx-img", companyId, title: "Answer 2 questions on rollout", identifier: null, status: "pending", href: "/PAP/issues/PAP-1000#qs", metadata: { kind: "ask_user_questions", issueId: "issue-1000" } },
       decisionVerbs: [{ id: "respond", label: "Answer", description: null }],
-      project: { id: "proj-alpha", name: "Alpha", urlKey: "alpha", color: "#0f766e", icon: "rocket" },
+      project: { id: "proj-alpha", name: "Alpha", urlKey: "alpha", color: "#0064C4", icon: "rocket" },
     }),
     activityAt: new Date(NOW - 90 * 60 * 1000).toISOString(),
     detail: { kind: "questions", questionCount: 2, firstQuestionText: "Which auth provider should we standardize on?", images: [IMAGES[0], IMAGES[2], IMAGES[3]] },

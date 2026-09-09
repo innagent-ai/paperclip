@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 /**
  * Plugin bridge initialization.
  *
@@ -511,7 +512,7 @@ function PluginSdkProjectPicker({
         null,
         createElement("span", {
           className: "h-3.5 w-3.5 shrink-0 rounded-sm",
-          style: { backgroundColor: selectedProject.color ?? "#6366f1" },
+          style: { backgroundColor: selectedProject.color ?? "#237BDE" },
         }),
         createElement("span", { className: "truncate" }, option.label),
       );
@@ -524,7 +525,7 @@ function PluginSdkProjectPicker({
         null,
         createElement("span", {
           className: "h-3.5 w-3.5 shrink-0 rounded-sm",
-          style: { backgroundColor: project?.color ?? "#6366f1" },
+          style: { backgroundColor: project?.color ?? "#237BDE" },
         }),
         createElement("span", { className: "truncate" }, option.label),
       );

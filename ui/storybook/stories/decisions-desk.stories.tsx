@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { useMemo, type ReactNode } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useQueryClient } from "@tanstack/react-query";
@@ -231,7 +232,7 @@ const DESK_ITEMS: AttentionItem[] = [
     queues: [PRS_QUEUE_REF],
     expiresAt: iso(NOW + 5 * HOUR),
     activityAt: iso(NOW - 40 * 60 * 1000),
-    project: { id: "proj-desk", name: "Decisions", urlKey: "decisions", color: "#7c3aed", icon: "layers" },
+    project: { id: "proj-desk", name: "Decisions", urlKey: "decisions", color: "#0D6DCF", icon: "layers" },
   }),
   item(
     "conf-1",
@@ -279,7 +280,7 @@ const DESK_ITEMS: AttentionItem[] = [
       decideBy: "whenever",
       createdAt: iso(NOW - 2 * HOUR),
       activityAt: iso(NOW - 26 * HOUR),
-      project: { id: "proj-beta", name: "Beta", urlKey: "beta", color: "#0f766e", icon: "rocket" },
+      project: { id: "proj-beta", name: "Beta", urlKey: "beta", color: "#0064C4", icon: "rocket" },
     },
   ),
   item(
@@ -342,7 +343,7 @@ const TRIAGE_ITEM = approval(
     decideByAttribution: attribution("Prioritizer"),
     queues: [PRS_QUEUE_REF, { key: "plan-approvals", title: "Plan approvals" }],
     expiresAt: iso(NOW + 4 * HOUR),
-    project: { id: "proj-desk", name: "Decisions", urlKey: "decisions", color: "#7c3aed", icon: "layers" },
+    project: { id: "proj-desk", name: "Decisions", urlKey: "decisions", color: "#0D6DCF", icon: "layers" },
   },
 );
 

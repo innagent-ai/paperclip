@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 // @vitest-environment jsdom
 
 import type { AnchorHTMLAttributes, ReactNode } from "react";
@@ -147,7 +148,7 @@ vi.mock("../api/projects", () => ({
         status: "in_progress",
         leadAgentId: null,
         targetDate: null,
-        color: "#22c55e",
+        color: "#5ABE73",
         pauseReason: null,
         pausedAt: null,
         archivedAt: null,
@@ -170,7 +171,7 @@ vi.mock("../api/projects", () => ({
         status: "in_progress",
         leadAgentId: null,
         targetDate: null,
-        color: "#38bdf8",
+        color: "#5CB1FF",
         pauseReason: null,
         pausedAt: null,
         archivedAt: null,
@@ -193,7 +194,7 @@ vi.mock("../api/projects", () => ({
         status: "completed",
         leadAgentId: null,
         targetDate: null,
-        color: "#94a3b8",
+        color: "#4EA3FF",
         pauseReason: null,
         pausedAt: null,
         archivedAt: new Date("2026-04-02T00:00:00.000Z"),
@@ -754,7 +755,7 @@ describe("Routines page", () => {
           systemKey: null,
           path: "reporting",
           depth: 1,
-          color: "#6366f1",
+          color: "#237BDE",
           position: 0,
           itemCount: 1,
           createdAt: new Date("2026-07-01T00:00:00.000Z"),

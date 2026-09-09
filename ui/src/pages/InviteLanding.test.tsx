@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 // @vitest-environment jsdom
 
 import { flushSync } from "react-dom";
@@ -104,7 +105,7 @@ describe("InviteLandingPage", () => {
       companyId: "company-1",
       companyName: "Acme Robotics",
       companyLogoUrl: "/api/invites/pcp_invite_test/logo",
-      companyBrandColor: "#114488",
+      companyBrandColor: "#00409E",
       inviteType: "company_join",
       allowedJoinTypes: "both",
       humanRole: "operator",
@@ -577,7 +578,7 @@ describe("InviteLandingPage", () => {
       companyId: "company-1",
       companyName: "Acme Robotics",
       companyLogoUrl: "/api/invites/pcp_invite_test/logo",
-      companyBrandColor: "#114488",
+      companyBrandColor: "#00409E",
       inviteType: "company_join",
       allowedJoinTypes: "both",
       humanRole: "operator",
@@ -644,7 +645,7 @@ describe("InviteLandingPage", () => {
       companyId: "company-1",
       companyName: "Acme Robotics",
       companyLogoUrl: "/api/invites/pcp_invite_test/logo",
-      companyBrandColor: "#114488",
+      companyBrandColor: "#00409E",
       inviteType: "company_join",
       allowedJoinTypes: "human",
       humanRole: "operator",

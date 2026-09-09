@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useSearchParams } from "@/lib/router";
@@ -5,10 +6,8 @@ import { authApi } from "../api/auth";
 import { queryKeys } from "../lib/queryKeys";
 import { getRememberedInvitePath } from "../lib/invite-memory";
 import { Button } from "@/components/ui/button";
-import { AsciiArtAnimation } from "@/components/AsciiArtAnimation";
 import { PaperclipLoading } from "@/components/AnimatedPaperclipIcon";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { Sparkles } from "lucide-react";
+import { PortaDeEntrada } from "@/components/PortaDeEntrada";
 
 type AuthMode = "sign_in" | "sign_up";
 
@@ -59,7 +58,7 @@ export function AuthPage() {
       navigate(nextPath, { replace: true });
     },
     onError: (err) => {
-      setError(err instanceof Error ? err.message : "Authentication failed");
+      setError(err instanceof Error ? err.message : "Não foi possível entrar.");
     },
   });
 
@@ -77,36 +76,26 @@ export function AuthPage() {
   }
 
   return (
-    <div className="fixed inset-0 flex bg-background">
-      <div className="absolute top-4 right-4 z-10">
-        <ThemeToggle />
-      </div>
-      {/* Left half — form */}
-      <div className="w-full md:w-1/2 flex flex-col overflow-y-auto">
-        <div className="w-full max-w-md mx-auto my-auto px-8 py-12">
-          <div className="flex items-center gap-2 mb-8">
-            <Sparkles className="h-4 w-4 text-muted-foreground" />
-            <span className="text-sm font-medium">Paperclip</span>
-          </div>
+    <PortaDeEntrada>
 
-          <h1 className="text-xl font-semibold">
-            {mode === "sign_in" ? "Sign in to Paperclip" : "Create your Paperclip account"}
-          </h1>
-          <p className="mt-1 text-sm text-muted-foreground">
+          <h2 className="text-[1.375rem] leading-[1.2] font-semibold text-[#2A2B2C]">
+            {mode === "sign_in" ? "Entrar no InnTeam" : "Criar sua conta InnTeam"}
+          </h2>
+          <p className="mt-2 text-[0.9375rem] leading-6 text-[#6D6E70]">
             {mode === "sign_in"
-              ? "Use your email and password to access this instance."
-              : "Create an account for this instance. Email confirmation is not required in v1."}
+              ? "Use seu e-mail e sua senha para entrar."
+              : "Crie sua conta. Não é preciso confirmar o e-mail."}
           </p>
 
           <form
-            className="mt-6 space-y-4"
+            className="mt-6 space-y-5"
             method="post"
             action={mode === "sign_up" ? "/api/auth/sign-up/email" : "/api/auth/sign-in/email"}
             onSubmit={(event) => {
               event.preventDefault();
               if (mutation.isPending) return;
               if (!canSubmit) {
-                setError("Please fill in all required fields.");
+                setError("Preencha todos os campos.");
                 return;
               }
               mutation.mutate();
@@ -114,11 +103,11 @@ export function AuthPage() {
           >
             {mode === "sign_up" && (
               <div>
-                <label htmlFor="name" className="text-xs text-muted-foreground mb-1 block">Name</label>
+                <label htmlFor="name" className="mb-2 block text-[12px] font-bold tracking-[0.18em] text-[#6D6E70] uppercase">Nome</label>
                 <input
                   id="name"
                   name="name"
-                  className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50"
+                  className="h-11 w-full rounded-[8px] border border-[#E7E7E7] bg-white px-[14px] text-[15px] text-[#292B2F] outline-none focus-visible:[outline:2px_solid_#258BFB] focus-visible:[outline-offset:2px] placeholder:text-[#A3ABB5]"
                   value={name}
                   onChange={(event) => setName(event.target.value)}
                   autoComplete="name"
@@ -131,11 +120,11 @@ export function AuthPage() {
               </div>
             )}
             <div>
-              <label htmlFor="email" className="text-xs text-muted-foreground mb-1 block">Email</label>
+              <label htmlFor="email" className="mb-2 block text-[12px] font-bold tracking-[0.18em] text-[#6D6E70] uppercase">E-mail</label>
               <input
                 id="email"
                 name="email"
-                className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50"
+                className="h-11 w-full rounded-[8px] border border-[#E7E7E7] bg-white px-[14px] text-[15px] text-[#292B2F] outline-none focus-visible:[outline:2px_solid_#258BFB] focus-visible:[outline-offset:2px] placeholder:text-[#A3ABB5]"
                 type="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
@@ -148,11 +137,11 @@ export function AuthPage() {
               />
             </div>
             <div>
-              <label htmlFor="password" className="text-xs text-muted-foreground mb-1 block">Password</label>
+              <label htmlFor="password" className="mb-2 block text-[12px] font-bold tracking-[0.18em] text-[#6D6E70] uppercase">Senha</label>
               <input
                 id="password"
                 name="password"
-                className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50"
+                className="h-11 w-full rounded-[8px] border border-[#E7E7E7] bg-white px-[14px] text-[15px] text-[#292B2F] outline-none focus-visible:[outline:2px_solid_#258BFB] focus-visible:[outline-offset:2px] placeholder:text-[#A3ABB5]"
                 type="password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
@@ -172,36 +161,29 @@ export function AuthPage() {
               type="submit"
               disabled={mutation.isPending}
               aria-disabled={!canSubmit || mutation.isPending}
-              className={`w-full ${!canSubmit && !mutation.isPending ? "opacity-50" : ""}`}
+              className="h-11 w-full rounded-[48px] bg-[#383B3F] text-[15px] font-bold text-white hover:bg-[#292B2F] focus-visible:ring-0 focus-visible:[outline:2px_solid_#258BFB] focus-visible:[outline-offset:2px]"
             >
               {mutation.isPending
-                ? "Working…"
+                ? "Entrando…"
                 : mode === "sign_in"
-                  ? "Sign In"
-                  : "Create Account"}
+                  ? "Entrar"
+                  : "Criar conta"}
             </Button>
           </form>
 
-          <div className="mt-5 text-sm text-muted-foreground">
-            {mode === "sign_in" ? "Need an account?" : "Already have an account?"}{" "}
+          <div className="mt-6 text-sm text-[#6D6E70]">
+            {mode === "sign_in" ? "Ainda não tem conta?" : "Já tem conta?"}{" "}
             <button
               type="button"
-              className="font-medium text-foreground underline underline-offset-2"
+              className="font-medium text-[#378CF0] underline underline-offset-2"
               onClick={() => {
                 setError(null);
                 setMode(mode === "sign_in" ? "sign_up" : "sign_in");
               }}
             >
-              {mode === "sign_in" ? "Create one" : "Sign in"}
+              {mode === "sign_in" ? "Criar agora" : "Entrar"}
             </button>
           </div>
-        </div>
-      </div>
-
-      {/* Right half — ASCII art animation (hidden on mobile) */}
-      <div className="hidden md:block w-1/2 overflow-hidden">
-        <AsciiArtAnimation />
-      </div>
-    </div>
+    </PortaDeEntrada>
   );
 }

@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 /**
  * Canonical status & priority color definitions.
  *
@@ -54,12 +55,12 @@ export const issueStatusTextDefault = "text-muted-foreground";
 export type BrandChipColor = "gray" | "blue" | "amber" | "green" | "violet" | "red";
 
 export const brandChipBadge: Record<BrandChipColor, string> = {
-  gray: "bg-[#F5F3F0] text-[#52585D] border-[#A8AEB2] dark:bg-[#6e696024] dark:text-[#9A958A] dark:border-[#9e958a73]",
-  blue: "bg-[#DBEAFE] text-[#1D4ED8] border-[#2563EB] dark:bg-[#2563eb2e] dark:text-[#2563EB] dark:border-[#2563eb73]",
-  amber: "bg-[#FEF3C7] text-[#B45309] border-[#F59E0B] dark:bg-[#f59e0b24] dark:text-[#F59E0B] dark:border-[#f59e0b73]",
-  green: "bg-[#DCFCE7] text-[#188A3C] border-[#22C55E] dark:bg-[#22c55e1f] dark:text-[#22C55E] dark:border-[#22c55e73]",
-  violet: "bg-[#EDE9FE] text-[#5B21B6] border-[#7C3AED] dark:bg-[#7c3aed2e] dark:text-[#7C3AED] dark:border-[#7c3aed73]",
-  red: "bg-[#FEE2E2] text-[#991B1B] border-[#DC2626] dark:bg-[#dc26262e] dark:text-[#DC2626] dark:border-[#dc262673]",
+  gray: "bg-[#F2F3F5] text-[#565759] border-[#ACADAF] dark:bg-[#696A6B24] dark:text-[#959597] dark:border-[#96969873]",
+  blue: "bg-[#96ECFF] text-[#005DBD] border-[#106FD0] dark:bg-[#106FD02e] dark:text-[#106FD0] dark:border-[#106FD073]",
+  amber: "bg-[#EEFF60] text-[#717D00] border-[#B0C000] dark:bg-[#B0C00024] dark:text-[#B0C000] dark:border-[#B0C00073]",
+  green: "bg-[#E2FAEA] text-[#3E854C] border-[#5ABE73] dark:bg-[#5ABE731f] dark:text-[#5ABE73] dark:border-[#5ABE7373]",
+  violet: "bg-[#EBECEE] text-[#004CAA] border-[#0D6DCF] dark:bg-[#0D6DCF2e] dark:text-[#0D6DCF] dark:border-[#0D6DCF73]",
+  red: "bg-[#FFB0A5] text-[#A5000A] border-[#D53537] dark:bg-[#D535372e] dark:text-[#D53537] dark:border-[#D5353773]",
 };
 
 // ---------------------------------------------------------------------------
@@ -161,10 +162,10 @@ export const agentStatusColorDefault: AgentBadgeColor = "gray";
 
 /** Heartbeat-capsule fill (solid) per colour name. gray darkens in dark mode. */
 export const agentStatusCapsule: Record<AgentBadgeColor, string> = {
-  gray: "bg-[#A8AEB2] dark:bg-[#6E6960]",
-  blue: "bg-[#2563EB]",
-  amber: "bg-[#F59E0B]",
-  red: "bg-[#DC2626]",
+  gray: "bg-[#ACADAF] dark:bg-[#696A6B]",
+  blue: "bg-[#106FD0]",
+  amber: "bg-[#B0C000]",
+  red: "bg-[#D53537]",
 };
 
 /** Per-status capsule motion (running pulses, error blinks). Honors reduced-motion. */
@@ -180,7 +181,7 @@ export const agentStatusMotion: Record<string, string> = {
  * canonical status blue, not cyan/teal. Kept here so components stay free of
  * hex literals (token-gate scope).
  */
-export const runningLabelText = "text-[#1D4ED8] dark:text-[#2563EB]";
+export const runningLabelText = "text-[#005DBD] dark:text-[#106FD0]";
 
 /**
  * Liveness-blue badge recipe — the shared "Live" / "Running" pill treatment
@@ -208,8 +209,8 @@ export const liveBlueBadge = "bg-blue-500/10 border-blue-500/30 text-blue-600 da
 export type BannerTone = "info" | "warning" | "danger";
 
 export const brandBanner: Record<BannerTone, string> = {
-  info: "border-[#2563EB]/40 bg-[#DBEAFE]/50 text-[#1D4ED8] dark:border-[#2563eb59] dark:bg-[#2563eb14] dark:text-[#93C5FD]",
-  warning: "border-[#F59E0B]/50 bg-[#FEF3C7]/60 text-[#B45309] dark:border-[#f59e0b59] dark:bg-[#f59e0b12] dark:text-[#F59E0B]",
+  info: "border-[#106FD0]/40 bg-[#96ECFF]/50 text-[#005DBD] dark:border-[#106FD059] dark:bg-[#106FD014] dark:text-[#6EC3FF]",
+  warning: "border-[#B0C000]/50 bg-[#EEFF60]/60 text-[#717D00] dark:border-[#B0C00059] dark:bg-[#B0C00012] dark:text-[#B0C000]",
   // PAP-14031: aligned to the proven `failed`/`error` chip recipe (bg-red-100 /
   // text-red-700 pair) so title + body both clear WCAG AA 4.5:1 in light and
   // dark on either `--background` or `--card`. The prior `text-destructive` on

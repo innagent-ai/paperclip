@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { Agent, FeedbackVote, IssueComment } from "@paperclipai/shared";
 import type { TranscriptEntry } from "@/adapters";
@@ -136,7 +137,7 @@ const mentionOptions: MentionOption[] = [
     name: "Board UI",
     kind: "project",
     projectId,
-    projectColor: "#0f766e",
+    projectColor: "#0064C4",
   },
 ];
 

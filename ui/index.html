@@ -3,9 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#18181b" />
-    <meta name="apple-mobile-web-app-title" content="Paperclip" />
-    <title>Paperclip</title>
+    <meta name="theme-color" content="#171A1F" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:wght@300;500;600;700&display=swap" rel="stylesheet" />
+    <meta name="apple-mobile-web-app-title" content="InnTeam" />
+    <title>InnTeam</title>
     <!-- PAPERCLIP_RUNTIME_BRANDING_START -->
     <!-- PAPERCLIP_RUNTIME_BRANDING_END -->
     <!-- PAPERCLIP_FAVICON_START -->
@@ -19,8 +22,8 @@
     <script>
       (() => {
         const key = "paperclip.theme";
-        const darkThemeColor = "#18181b";
-        const lightThemeColor = "#ffffff";
+        const darkThemeColor = "#171A1F";
+        const lightThemeColor = "#EEF3F9";
         try {
           const stored = window.localStorage.getItem(key);
           const prefersDark =
@@ -39,11 +42,31 @@
           document.documentElement.classList.add("dark");
           document.documentElement.style.colorScheme = "dark";
         }
+        const splashStyle = document.createElement("style");
+        splashStyle.textContent =
+          "#inn-splash{background:" +
+          (document.documentElement.classList.contains("dark") ? darkThemeColor : lightThemeColor) +
+          "}";
+        document.head.appendChild(splashStyle);
       })();
     </script>
   </head>
   <body>
+    <div id="inn-splash" aria-hidden="true" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:2147483647"><svg width="48" height="48" viewBox="0 0 121 120" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M46.8653 73.104L59.9873 108.547L35.1233 119.991L25.6268 94.3697L0.00524902 84.8461L11.4227 59.9821L46.8653 73.104Z" fill="#D2C5EF"/> <path d="M46.8653 46.8602L11.4227 59.9821L0.00524902 35.1181L25.6268 25.6216L35.1233 0L59.9873 11.4174L46.8653 46.8602Z" fill="#D2C5EF"/> <path d="M108.66 59.9821L120.105 84.8461L94.3747 94.3697L84.8784 119.991L59.9872 108.547L73.1363 73.104L108.66 59.9821Z" fill="#D2C5EF"/> <path d="M73.1363 46.8602L59.9872 11.4174L84.8784 0L94.3747 25.6216L120.105 35.1181L108.66 59.9821L73.1363 46.8602Z" fill="#D2C5EF"/> </svg></div>
     <div id="root"></div>
+    <script>
+      (() => {
+        const root = document.getElementById("root");
+        const splash = document.getElementById("inn-splash");
+        if (!root || !splash) return;
+        new MutationObserver((_, obs) => {
+          if (root.firstChild) {
+            splash.remove();
+            obs.disconnect();
+          }
+        }).observe(root, { childList: true });
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

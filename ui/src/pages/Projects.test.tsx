@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 // @vitest-environment jsdom
 
 import type { ReactNode } from "react";
@@ -75,7 +76,7 @@ function makeProject(overrides: Partial<Project>): Project {
     status: "in_progress",
     leadAgentId: null,
     targetDate: null,
-    color: "#ef4444",
+    color: "#EA4B49",
     icon: null,
     env: null,
     pauseReason: null,

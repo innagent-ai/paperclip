@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 // token-extraction: allowlisted — intentional one-off decoration (DECISION-SHEET.md B1
 // user ruling). The bg-[...gradient...] / shadow-[...] literals in this demo/UX-lab page
 // are deliberate one-off decoration, reverted from --gradient-extract-*/--shadow-extract-*
@@ -201,7 +202,7 @@ function InviteSummaryPanel({
         <CompanyPatternIcon
           companyName="Acme Robotics"
           logoUrl="/api/invites/pcp_invite_test/logo"
-          brandColor="#114488"
+          brandColor="#00409E"
           className="h-16 w-16 rounded-none border border-zinc-800"
         />
         <div className="min-w-0">
@@ -413,7 +414,7 @@ function InviteResultPreview({
         <CompanyPatternIcon
           companyName="Acme Robotics"
           logoUrl="/api/invites/pcp_invite_test/logo"
-          brandColor="#114488"
+          brandColor="#00409E"
           className="h-12 w-12 rounded-none border border-zinc-800"
         />
         <h3 className="text-lg font-semibold">{title}</h3>

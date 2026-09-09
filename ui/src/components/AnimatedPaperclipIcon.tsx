@@ -1,36 +1,30 @@
+// innagent: status derivados dos tokens da marca
 import type { SVGProps } from "react";
 import { cn } from "../lib/utils";
 
+/**
+ * Símbolo InnTeam no lugar do clipe animado do Paperclip. Mesmos nomes exportados
+ * (AnimatedPaperclipIcon, PaperclipLoading) para os usos existentes. Fonte: /root/projects/innagent-site/public/marca/familia/innteam-A-simbolo.svg.
+ */
 export function AnimatedPaperclipIcon({ className, ...props }: SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      viewBox="-1 -1 26 26"
-      className={cn("paperclip-thinking-icon", className)}
-      aria-hidden="true"
-      {...props}
-    >
-      <path
-        className="paperclip-thinking-icon-path"
-        d="M16 6 l-8.414 8.586 a2.000 2.000 0 0 0 2.828 2.828 l8.414 -8.586 a4.000 4.000 0 1 0 -5.657 -5.657 l-8.379 8.551 a6.000 6.000 0 1 0 8.485 8.485 l8.379 -8.551"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+    <svg viewBox="0 0 121 120" className={cn("animate-pulse", className)} aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      
+<path d="M46.8653 73.104L59.9873 108.547L35.1233 119.991L25.6268 94.3697L0.00524902 84.8461L11.4227 59.9821L46.8653 73.104Z" fill="#7BD0FF"/>
+<path d="M46.8653 46.8602L11.4227 59.9821L0.00524902 35.1181L25.6268 25.6216L35.1233 0L59.9873 11.4174L46.8653 46.8602Z" fill="#7BD0FF"/>
+<path d="M108.66 59.9821L120.105 84.8461L94.3747 94.3697L84.8784 119.991L59.9872 108.547L73.1363 73.104L108.66 59.9821Z" fill="#7BD0FF"/>
+<path d="M73.1363 46.8602L59.9872 11.4174L84.8784 0L94.3747 25.6216L120.105 35.1181L108.66 59.9821L73.1363 46.8602Z" fill="#7BD0FF"/>
+
     </svg>
   );
 }
 
-/** Full-page loading state: a large, centered, gray animated paperclip. */
+/** Estado de carregamento de página inteira: símbolo pulsando, centralizado. */
 export function PaperclipLoading({ className }: { className?: string }) {
   return (
-    <div
-      role="status"
-      className={cn("flex min-h-dvh w-full items-center justify-center", className)}
-    >
-      <AnimatedPaperclipIcon className="h-24 w-24 text-muted-foreground" />
-      <span className="sr-only">Loading…</span>
+    <div role="status" className={cn("flex min-h-dvh w-full items-center justify-center", className)}>
+      <AnimatedPaperclipIcon className="h-16 w-16" />
+      <span className="sr-only">Carregando…</span>
     </div>
   );
 }

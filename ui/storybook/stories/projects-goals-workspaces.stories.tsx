@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { useMemo, useState, type ReactNode } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useQueryClient } from "@tanstack/react-query";
@@ -415,8 +416,8 @@ function setWorktreeMeta(name: string, content: string) {
 function WorktreeBannerMatrix() {
   setWorktreeMeta("paperclip-worktree-enabled", "true");
   setWorktreeMeta("paperclip-worktree-name", "PAP-1675-projects-goals-workspaces");
-  setWorktreeMeta("paperclip-worktree-color", "#0f766e");
-  setWorktreeMeta("paperclip-worktree-text-color", "#ecfeff");
+  setWorktreeMeta("paperclip-worktree-color", "#0064C4");
+  setWorktreeMeta("paperclip-worktree-text-color", "#F9FAFC");
 
   return (
     <div className="space-y-4">

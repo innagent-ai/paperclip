@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import {
   useCallback,
   useEffect,
@@ -507,11 +508,11 @@ function EnvironmentCustomImageBrowserTerminal({
       scrollback: CUSTOM_IMAGE_TERMINAL_SCROLLBACK_ROWS,
       theme: {
         // token-extraction: allowlisted — xterm.js terminal theme config; functional third-party option object, not a rendered CSS value.
-        background: "#0a0a0a",
-        foreground: "#f5f5f5",
-        cursor: "#22d3ee",
-        cursorAccent: "#020617",
-        selectionBackground: "#2563eb55",
+        background: "#090A0B",
+        foreground: "#F4F5F7",
+        cursor: "#6ABFFF",
+        cursorAccent: "#05004A",
+        selectionBackground: "#106FD055",
       },
     });
     const fitAddon = new FitAddon();

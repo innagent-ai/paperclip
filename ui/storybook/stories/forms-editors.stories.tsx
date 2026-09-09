@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { useMemo, useState, type ReactNode } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { Agent, CompanySecret, EnvBinding, Project, RoutineVariable } from "@paperclipai/shared";
@@ -108,7 +109,7 @@ See [the implementation notes](https://github.com/paperclipai/paperclip).`;
 const editorMentions: MentionOption[] = [
   { id: "agent-codex", name: "CodexCoder", kind: "agent", agentId: "agent-codex", agentIcon: "code" },
   { id: "agent-qa", name: "QAChecker", kind: "agent", agentId: "agent-qa", agentIcon: "shield" },
-  { id: "project-board-ui", name: "Board UI", kind: "project", projectId: "project-board-ui", projectColor: "#0f766e" },
+  { id: "project-board-ui", name: "Board UI", kind: "project", projectId: "project-board-ui", projectColor: "#0064C4" },
   { id: "user-board", name: "Board Operator", kind: "user", userId: "user-board" },
 ];
 
@@ -301,7 +302,7 @@ const storybookProject: Project = {
   status: "in_progress",
   leadAgentId: "agent-codex",
   targetDate: null,
-  color: "#0f766e",
+  color: "#0064C4",
   icon: null,
   env: null,
   pauseReason: null,

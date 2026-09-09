@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { Issue, IssueLabel, Project } from "@paperclipai/shared";
@@ -86,7 +87,7 @@ const longLabels: IssueLabel[] = [
     id: "label-long-properties-pane-regression",
     companyId,
     name: "label-with-a-deliberately-long-name-that-must-truncate-inside-the-pane",
-    color: "#0f766e",
+    color: "#0064C4",
     createdAt: new Date("2026-01-01T00:00:00Z"),
     updatedAt: new Date("2026-01-01T00:00:00Z"),
   },
@@ -94,7 +95,7 @@ const longLabels: IssueLabel[] = [
     id: "label-long-properties-pane-follow-up",
     companyId,
     name: "secondary-overflow-regression-label",
-    color: "#b45309",
+    color: "#717D00",
     createdAt: new Date("2026-01-01T00:00:00Z"),
     updatedAt: new Date("2026-01-01T00:00:00Z"),
   },

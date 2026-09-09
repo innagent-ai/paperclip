@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { Agent } from "@paperclipai/shared";
@@ -211,7 +212,7 @@ export const SurfaceGallery: Story = {
 
       <div className="space-y-3">
         <SectionLabel>Board 5 — Use-while-paused toast</SectionLabel>
-        <div className="w-80 rounded-lg border border-[#F59E0B]/50 bg-[#FEF3C7]/60 p-3 text-sm text-[#B45309] dark:bg-[#f59e0b12] dark:text-[#F59E0B]">
+        <div className="w-80 rounded-lg border border-[#B0C000]/50 bg-[#EEFF60]/60 p-3 text-sm text-[#717D00] dark:bg-[#B0C00012] dark:text-[#B0C000]">
           <p className="font-medium">Briefs Agent is paused</p>
           <p className="opacity-90">Resume the agent to generate this brief.</p>
           <a href="#" className="mt-1 inline-block text-xs font-medium underline">View agent</a>
