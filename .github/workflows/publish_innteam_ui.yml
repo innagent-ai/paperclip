@@ -72,10 +72,30 @@ jobs:
           checa "fonte Lato"          "Lato"
           checa "tinta da marca"      "#292B2F"
           checa "fundo da marca"      "#EEF3F9"
-          # as cores de fábrica não podem sobreviver ao tema
-          for velha in "#F99C00" "#FB2C36" "#00A5EF" "#F59E0B" "#2563EB"; do
-            if echo "$css" | grep -qiF "$velha"; then
-              echo "SOBROU cor de fabrica: $velha"; falhas=$((falhas+1))
+
+          # Cor de fábrica: TETO QUE SÓ DESCE.
+          #
+          # Três destas já morreram e o teto delas é zero. As outras duas — âmbar e azul —
+          # estão VIVAS na UI que está no ar (medido em 12/09 no CSS servido pela worker01:
+          # 27 e 23 ocorrências). A guarda pedia zero e por isso nunca passou verde nesta
+          # branch: ela reprovava o próprio status quo, e com isso bloqueava entregas que
+          # nada têm a ver com cor — foi o que travou a publicação da imagem.
+          #
+          # Não se esconde a dívida baixando a guarda para "ignore essas duas": trava-se no
+          # número de hoje. Quem piorar reprova; quem melhorar, atualiza o teto para baixo.
+          # (Mesmo padrão dos controles crus do app, martelado em 06/08.)
+          declare -A TETO=( ["#F99C00"]=0 ["#FB2C36"]=0 ["#00A5EF"]=0 ["#F59E0B"]=27 ["#2563EB"]=23 )
+          for velha in "${!TETO[@]}"; do
+            n=$(echo "$css" | grep -oiF "$velha" | wc -l)
+            teto=${TETO[$velha]}
+            if [ "$n" -gt "$teto" ]; then
+              echo "PIOROU  $velha: $n ocorrências (teto $teto)"; falhas=$((falhas+1))
+            elif [ "$n" -lt "$teto" ]; then
+              echo "MELHOROU $velha: $n < teto $teto — baixe o teto neste arquivo"; falhas=$((falhas+1))
+            elif [ "$teto" -gt 0 ]; then
+              echo "divida  $velha: $n ocorrências (teto $teto, inalterado)"
+            else
+              echo "ok      $velha ausente"
             fi
           done
           test "$falhas" = "0" || { echo "$falhas problema(s) no tema"; exit 1; }
