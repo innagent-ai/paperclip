@@ -1,4 +1,10 @@
+/* innagent: status derivados dos tokens da marca */
+/* InnAgent theme (Hotelify PRO tokens) — fork innagent-ai/paperclip */
 @import "tailwindcss";
+/* innagent: doc e codemod NAO sao fonte de UI — `border-[#106FD0]` num
+   markdown de decisao virava classe no CSS de producao. */
+@source not "../../doc";
+@source not "../../scripts";
 @plugin "@tailwindcss/typography";
 
 @font-face {
@@ -20,7 +26,85 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "InterVariable", "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+/* innagent: paleta-do-tailwind derivada */
+  --color-red-50: #F4F5F7;
+  --color-red-100: #E9EAEC;
+  --color-red-200: #FFCAC5;
+  --color-red-300: #FFA49C;
+  --color-red-400: #FF6660;
+  --color-red-500: #EB4C4A;
+  --color-red-600: #D53637;
+  --color-red-700: #BB1421;
+  --color-red-800: #A00016;
+  --color-red-900: #890011;
+  --color-red-950: #4A0005;
+  --color-blue-50: #F4F5F7;
+  --color-blue-100: #E8E9EA;
+  --color-blue-200: #BEDAFF;
+  --color-blue-300: #96C4FF;
+  --color-blue-400: #56A2FF;
+  --color-blue-500: #3187EB;
+  --color-blue-600: #106FD0;
+  --color-blue-700: #005EB7;
+  --color-blue-800: #004D98;
+  --color-blue-900: #004182;
+  --color-blue-950: #002855;
+  --color-sky-50: #F7F7F9;
+  --color-sky-100: #EEEFF0;
+  --color-sky-200: #C9E1FF;
+  --color-sky-300: #A1CAFF;
+  --color-sky-400: #6FAFFF;
+  --color-sky-500: #479BFF;
+  --color-sky-600: #247CDF;
+  --color-sky-700: #0061BC;
+  --color-sky-800: #0052A1;
+  --color-sky-900: #004487;
+  --color-sky-950: #002B5A;
+  --color-amber-50: #FAFBFD;
+  --color-amber-100: #EEFF80;
+  --color-amber-200: #E2F452;
+  --color-amber-300: #D3E43D;
+  --color-amber-400: #C3D422;
+  --color-amber-500: #B0C000;
+  --color-amber-600: #919E00;
+  --color-amber-700: #717B00;
+  --color-amber-800: #5A6200;
+  --color-amber-900: #4A5100;
+  --color-amber-950: #282C00;
+  --color-violet-50: #F4F4F6;
+  --color-violet-100: #EBECEE;
+  --color-violet-200: #C6DFFF;
+  --color-violet-300: #96C4FF;
+  --color-violet-400: #54A1FF;
+  --color-violet-500: #2A81E4;
+  --color-violet-600: #0E6DCF;
+  --color-violet-700: #005FB9;
+  --color-violet-800: #004F9B;
+  --color-violet-900: #004182;
+  --color-violet-950: #002956;
+  --color-emerald-50: #F7F8FA;
+  --color-emerald-100: #DFF4E9;
+  --color-emerald-200: #C4EBD6;
+  --color-emerald-300: #A0DBBE;
+  --color-emerald-400: #7FC4A2;
+  --color-emerald-500: #6FAC8F;
+  --color-emerald-600: #598B74;
+  --color-emerald-700: #486F5C;
+  --color-emerald-800: #385848;
+  --color-emerald-900: #2E483C;
+  --color-emerald-950: #192920;
+  --color-green-50: #F8F9FB;
+  --color-green-100: #E8F7EB;
+  --color-green-200: #D2F0D7;
+  --color-green-300: #AFE4B9;
+  --color-green-400: #85D094;
+  --color-green-500: #72B881;
+  --color-green-600: #5D9869;
+  --color-green-700: #497752;
+  --color-green-800: #395E41;
+  --color-green-900: #314E37;
+  --color-green-950: #192B1C;
+  --font-sans: "Lato", "InterVariable", "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -63,7 +147,7 @@
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) * 1.4);
-  --font-heading: var(--font-sans);
+  --font-heading: "Bricolage Grotesque", var(--font-sans);
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
@@ -71,39 +155,39 @@
 
 :root {
   color-scheme: light;
-  --radius: 0.5rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --radius: 0.625rem;
+  --background: #EEF3F9;
+  --foreground: #292B2F;
+  --card: #FFFFFF;
+  --card-foreground: #292B2F;
+  --popover: #FFFFFF;
+  --popover-foreground: #292B2F;
+  --primary: #292B2F;
+  --primary-foreground: #F5F7FA;
+  --secondary: #F8F8F8;
+  --secondary-foreground: #292B2F;
+  --muted: #F8F8F8;
+  --muted-foreground: #6E6E6E;
+  --accent: #F0F1F3;
+  --accent-foreground: #292B2F;
+  --destructive: #FF5F5A;
+  --destructive-foreground: #FF5F5A;
+  --border: #E7E7E7;
+  --input: #E7E7E7;
+  --ring: #258BFB;
+  --chart-1: #258BFB;
+  --chart-2: #D8EB12;
+  --chart-3: #6E6E6E;
+  --chart-4: #A3ABB5;
+  --chart-5: #292B2F;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #292B2F;
+  --sidebar-primary: #258BFB;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #EEF3F9;
+  --sidebar-accent-foreground: #292B2F;
+  --sidebar-border: #E7E7E7;
+  --sidebar-ring: #258BFB;
   --chip-match-title-bg: oklch(0.97 0.02 265);
   --chip-match-title-fg: oklch(0.4 0.13 265);
   --chip-match-title-border: oklch(0.85 0.05 265);
@@ -116,35 +200,35 @@
   --chip-match-identifier-bg: var(--muted);
   --chip-match-identifier-fg: var(--muted-foreground);
   --chip-match-identifier-border: var(--border);
-  --paperclip-doc-annotation-highlight-open: #fef08a;
-  --paperclip-doc-annotation-highlight-focused: #fde047;
-  --paperclip-doc-annotation-highlight-stale: #fef08a;
-  --paperclip-doc-annotation-highlight-resolved: #fef9c3;
+  --paperclip-doc-annotation-highlight-open: #F9F0A6;
+  --paperclip-doc-annotation-highlight-focused: #DBED49;
+  --paperclip-doc-annotation-highlight-stale: #F9F0A6;
+  --paperclip-doc-annotation-highlight-resolved: #FCF8D0;
 
   /* Brand agent-capsule gradient stops (paperclip.ing/brand/).
      "The capsule is the agent" — each agent gets a 2-stop gradient,
      --agent-Na (top) → --agent-Nb (bottom). Brand-fixed hex, identical
      across themes. Indices 1–10; consumed by AgentCapsule. */
-  --agent-1a: #f7cfdc;
-  --agent-1b: #1f7a3a;
-  --agent-2a: #c9a9e8;
-  --agent-2b: #ee79a1;
-  --agent-3a: #28164b;
-  --agent-3b: #7a1530;
-  --agent-4a: #f3e6c4;
-  --agent-4b: #e3a21a;
-  --agent-5a: #1f4dd6;
-  --agent-5b: #3aa35c;
-  --agent-6a: #e94b27;
-  --agent-6b: #5a1122;
-  --agent-7a: #7eb6e3;
-  --agent-7b: #ee79a1;
-  --agent-8a: #9ce8a7;
-  --agent-8b: #bd7ff0;
-  --agent-9a: #f3b49e;
-  --agent-9b: #1f4ed4;
-  --agent-10a: #f2d95f;
-  --agent-10b: #4fbcba;
+  --agent-1a: #FFCEC9;
+  --agent-1b: #3A7647;
+  --agent-2a: #87BCFF;
+  --agent-2b: #FF726A;
+  --agent-3a: #00234B;
+  --agent-3b: #82000F;
+  --agent-4a: #E2F552;
+  --agent-4b: #ACBB00;
+  --agent-5a: #005DB5;
+  --agent-5b: #579E69;
+  --agent-6a: #869300;
+  --agent-6b: #620009;
+  --agent-7a: #75B2FF;
+  --agent-7b: #FF726A;
+  --agent-8a: #ABE3B2;
+  --agent-8b: #55A1FF;
+  --agent-9a: #C1D21E;
+  --agent-9b: #005DB5;
+  --agent-10a: #D4E640;
+  --agent-10b: #6DB7B6;
 
   /* Status colors — one base hue per status, consumed by the agent / task
      status chips and the task status icons. Mode-independent: the `.status-chip`,
@@ -152,17 +236,17 @@
      fill/text/border from these via color-mix, so a single hue covers both
      modes. Values mirror the PAP-75 brand palette (gray inert, blue liveness,
      amber queued, violet review, green done, red blocked). */
-  --status-agent-idle: #a8aeb2;
-  --status-agent-running: #2563eb;
-  --status-agent-paused: #f59e0b;
-  --status-agent-error: #dc2626;
-  --status-task-backlog: #a8aeb2;
-  --status-task-todo: #f59e0b;
-  --status-task-in_progress: #2563eb;
-  --status-task-in_review: #7c3aed;
-  --status-task-done: #22c55e;
-  --status-task-blocked: #dc2626;
-  --status-task-cancelled: #a8aeb2;
+  --status-agent-idle: #ACADAF;
+  --status-agent-running: #106FD0;
+  --status-agent-paused: #B0C000;
+  --status-agent-error: #D53537;
+  --status-task-backlog: #ACADAF;
+  --status-task-todo: #B0C000;
+  --status-task-in_progress: #106FD0;
+  --status-task-in_review: #0D6DCF;
+  --status-task-done: #5ABE73;
+  --status-task-blocked: #D53537;
+  --status-task-cancelled: #ACADAF;
 
   /* Task status ICON hues (PAP-238 3b) — AA-tuned (every glyph ≥ 3:1 against
      its surface, WCAG 2.1 AA, both modes). Distinct from the
@@ -174,21 +258,21 @@
      `in_queue` is the BLOCKED shape recoloured to the in_progress blue
      (replaces the bespoke teal "covered" state). Light values here; the
      `.dark` block below overrides the four that need a mode-specific hue. */
-  --status-task-icon-backlog: #52585d;   /* gray darkened — 7.21:1 on paper */
-  --status-task-icon-todo: #cc7a00;       /* amber darkened — clears 3:1 */
-  --status-task-icon-in_progress: var(--status-task-in_progress); /* #2563eb both modes */
-  --status-task-icon-in_review: var(--status-task-in_review);     /* #7c3aed (light) */
-  --status-task-icon-done: #16a34a;       /* green darkened — clears 3:1 */
-  --status-task-icon-blocked: var(--status-task-blocked);         /* #dc2626 both modes */
-  --status-task-icon-cancelled: #52585d;
+  --status-task-icon-backlog: #565759;   /* gray darkened — 7.21:1 on paper */
+  --status-task-icon-todo: #8D9A00;       /* amber darkened — clears 3:1 */
+  --status-task-icon-in_progress: var(--status-task-in_progress); /* #106FD0 both modes */
+  --status-task-icon-in_review: var(--status-task-in_review);     /* #0D6DCF (light) */
+  --status-task-icon-done: #489D5C;       /* green darkened — clears 3:1 */
+  --status-task-icon-blocked: var(--status-task-blocked);         /* #D53537 both modes */
+  --status-task-icon-cancelled: #565759;
   --status-task-icon-in_queue: var(--status-task-in_progress);    /* blocked shape, blue */
 
-  --folder-color-indigo: #6366f1;
-  --folder-color-violet: #8b5cf6;
-  --folder-color-emerald: #10b981;
-  --folder-color-cyan: #06b6d4;
-  --folder-color-amber: #f59e0b;
-  --folder-color-slate: #64748b;
+  --folder-color-indigo: #237BDE;
+  --folder-color-violet: #2A81E4;
+  --folder-color-emerald: #52B388;
+  --folder-color-cyan: #5CA5FF;
+  --folder-color-amber: #B0C000;
+  --folder-color-slate: #1571D3;
   --gtc-folder-row: 1rem minmax(0, 1fr) auto;
   --gtc-folder-row-actions: 1rem minmax(0, 1fr) auto auto;
   --sz-folder-rail: 13.25rem;
@@ -249,7 +333,7 @@
      .status-chip color-mix recipe. */
   --tc-mode-agent: var(--status-task-backlog);
   --tc-mode-plan: var(--status-task-todo);
-  --tc-mode-ask: #3b82f6;
+  --tc-mode-ask: #3187EA;
 
   /* Agent-comment bubble fill (v7 grammar): quiet gray card, no border. */
   --bubble-agent: oklch(0.955 0 0);
@@ -267,39 +351,39 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --bubble-agent: oklch(0.24 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.637 0.237 25.331); /* Gallery feedback round 1: user preferred master's original dark destructive red over the preset's softer 0.704 0.191 22.216. */
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #171A1F;
+  --foreground: #F5F7FA;
+  --card: #20242A;
+  --card-foreground: #F5F7FA;
+  --popover: #24292F;
+  --popover-foreground: #F5F7FA;
+  --primary: #F5F7FA;
+  --primary-foreground: #171A1F;
+  --bubble-agent: #20242A;
+  --secondary: #252A31;
+  --secondary-foreground: #F5F7FA;
+  --muted: #252A31;
+  --muted-foreground: #A3ABB5;
+  --accent: #252A31;
+  --accent-foreground: #F5F7FA;
+  --destructive: #FF5F5A; /* Gallery feedback round 1: user preferred master's original dark destructive red over the preset's softer 0.704 0.191 22.216. */
+  --destructive-foreground: #F5F7FA;
+  --border: #343A43;
+  --input: #3C434D;
+  --ring: #258BFB;
+  --chart-1: #258BFB;
+  --chart-2: #D8EB12;
+  --chart-3: #A3ABB5;
+  --chart-4: #6E6E6E;
+  --chart-5: #F5F7FA;
+  --sidebar: #171A1F;
+  --sidebar-foreground: #F5F7FA;
+  --sidebar-primary: #258BFB;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #252A31;
+  --sidebar-accent-foreground: #F5F7FA;
+  --sidebar-border: #343A43;
+  --sidebar-ring: #258BFB;
   --chip-match-title-bg: oklch(0.27 0.04 265 / 0.5);
   --chip-match-title-fg: oklch(0.78 0.10 265);
   --chip-match-title-border: oklch(0.4 0.06 265);
@@ -312,19 +396,19 @@
   --chip-match-identifier-bg: var(--muted);
   --chip-match-identifier-fg: var(--muted-foreground);
   --chip-match-identifier-border: var(--border);
-  --paperclip-doc-annotation-highlight-open: #a16207;
-  --paperclip-doc-annotation-highlight-focused: #ca8a04;
-  --paperclip-doc-annotation-highlight-stale: #854d0e;
-  --paperclip-doc-annotation-highlight-resolved: #713f12;
+  --paperclip-doc-annotation-highlight-open: #707B00;
+  --paperclip-doc-annotation-highlight-focused: #95A300;
+  --paperclip-doc-annotation-highlight-stale: #5A6300;
+  --paperclip-doc-annotation-highlight-resolved: #4C5300;
 
   /* Dark-mode AA overrides for the status-icon hues that need a mode-specific
      value (PAP-238). in_progress / blocked stay identical (same blue / red both
      modes) and in_queue tracks in_progress, so they need no override. */
-  --status-task-icon-backlog: #9a958a;
-  --status-task-icon-todo: #fbbf24;
-  --status-task-icon-in_review: #9474f0;  /* deeper than violet-400, reads purple */
-  --status-task-icon-done: #34d06f;
-  --status-task-icon-cancelled: #9a958a;
+  --status-task-icon-backlog: #959597;
+  --status-task-icon-todo: #C5D728;
+  --status-task-icon-in_review: #398FF3;  /* deeper than violet-400, reads purple */
+  --status-task-icon-done: #65C981;
+  --status-task-icon-cancelled: #959597;
 }
 
 ::highlight(paperclip-doc-annotation-open) {
@@ -365,6 +449,7 @@
   h1,
   h2,
   h3 {
+    font-family: var(--font-heading);
     text-wrap: balance;
   }
   /* Prevent double-tap-to-zoom on interactive elements for mobile */
@@ -973,7 +1058,7 @@
 }
 
 @keyframes hb-blink {
-  0%, 49.9% { background-color: #DC2626; }
+  0%, 49.9% { background-color: #D53537; }
   50%, 100% { background-color: var(--background); }
 }
 
@@ -1011,11 +1096,11 @@
 
 @keyframes agent-cap-online-pulse {
   0%, 100% {
-    box-shadow: 0 0 0 0 color-mix(in oklab, #22c55e 0%, transparent);
+    box-shadow: 0 0 0 0 color-mix(in oklab, #5ABE73 0%, transparent);
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 0 6px color-mix(in oklab, #22c55e 18%, transparent);
+    box-shadow: 0 0 0 6px color-mix(in oklab, #5ABE73 18%, transparent);
     transform: scale(1.03);
   }
 }
@@ -1033,14 +1118,14 @@
 }
 
 /* Blue online-glow variant (PAP-125) — the Option 4 wizard's review step.
-   Same breathing ring as the green pulse, recoloured to brand blue (#2563eb). */
+   Same breathing ring as the green pulse, recoloured to brand blue (#3B6BCD). */
 @keyframes agent-cap-online-pulse-blue {
   0%, 100% {
-    box-shadow: 0 0 0 0 color-mix(in oklab, #2563eb 0%, transparent);
+    box-shadow: 0 0 0 0 color-mix(in oklab, #106FD0 0%, transparent);
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 0 6px color-mix(in oklab, #2563eb 22%, transparent);
+    box-shadow: 0 0 0 6px color-mix(in oklab, #106FD0 22%, transparent);
     transform: scale(1.03);
   }
 }
@@ -1169,14 +1254,14 @@
 }
 
 .paperclip-mdxeditor-content a:not(.paperclip-mention-chip):not(.paperclip-project-mention-chip) {
-  color: color-mix(in oklab, var(--foreground) 76%, #0969da 24%);
+  color: color-mix(in oklab, var(--foreground) 76%, #0C6DCE 24%);
   text-decoration: underline;
   text-underline-offset: 0.15em;
   cursor: pointer;
 }
 
 .dark .paperclip-mdxeditor-content a:not(.paperclip-mention-chip):not(.paperclip-project-mention-chip) {
-  color: color-mix(in oklab, var(--foreground) 80%, #58a6ff 20%);
+  color: color-mix(in oklab, var(--foreground) 80%, #5CA5FF 20%);
 }
 
 .paperclip-mdxeditor-content a.paperclip-mention-chip,
@@ -1305,48 +1390,48 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
   padding: 0;
   border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
   border-radius: calc(var(--radius) - 3px);
-  background: #1e1e2e;
-  color: #cdd6f4;
+  background: #001F45;
+  color: #BDDAFF;
   overflow-x: auto;
 }
 
 /* Dark theme for CodeMirror code blocks inside the MDXEditor.
    Overrides the default cm6-theme-basic-light that MDXEditor bundles. */
 .paperclip-mdxeditor .cm-editor {
-  background-color: #1e1e2e !important;
-  color: #cdd6f4 !important;
+  background-color: #001F45 !important;
+  color: #BDDAFF !important;
   font-size: 1em;
 }
 
 .paperclip-mdxeditor .cm-gutters {
-  background-color: #181825 !important;
-  color: #585b70 !important;
-  border-right: 1px solid #313244 !important;
+  background-color: #191A1B !important;
+  color: #005BB1 !important;
+  border-right: 1px solid #003368 !important;
 }
 
 .paperclip-mdxeditor .cm-activeLineGutter {
-  background-color: #1e1e2e !important;
+  background-color: #001F45 !important;
 }
 
 .paperclip-mdxeditor .cm-activeLine {
-  background-color: color-mix(in oklab, #cdd6f4 5%, transparent) !important;
+  background-color: color-mix(in oklab, #BDDAFF 5%, transparent) !important;
 }
 
 .paperclip-mdxeditor .cm-cursor,
 .paperclip-mdxeditor .cm-dropCursor {
-  border-left-color: #cdd6f4 !important;
+  border-left-color: #BDDAFF !important;
 }
 
 .paperclip-mdxeditor .cm-selectionBackground {
-  background-color: color-mix(in oklab, #89b4fa 25%, transparent) !important;
+  background-color: color-mix(in oklab, #7CB6FF 25%, transparent) !important;
 }
 
 .paperclip-mdxeditor .cm-focused .cm-selectionBackground {
-  background-color: color-mix(in oklab, #89b4fa 30%, transparent) !important;
+  background-color: color-mix(in oklab, #7CB6FF 30%, transparent) !important;
 }
 
 .paperclip-mdxeditor .cm-content {
-  caret-color: #cdd6f4;
+  caret-color: #BDDAFF;
 }
 
 /* MDXEditor code block language selector – show on hover only */
@@ -1366,9 +1451,9 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
 
 .paperclip-mdxeditor-content [class*="_codeMirrorToolbar_"] select,
 .paperclip-mdxeditor-content [class*="_codeBlockToolbar_"] select {
-  background-color: #313244;
-  color: #cdd6f4;
-  border-color: #45475a;
+  background-color: #003368;
+  color: #BDDAFF;
+  border-color: #00478D;
 }
 
 .paperclip-mdxeditor-content [class*="_codeMirrorWrapper_"]:hover [class*="_codeMirrorToolbar_"],
@@ -1382,17 +1467,17 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
    Dark theme code blocks with compact sizing.
    Override prose CSS variables so prose-invert can't revert to defaults. */
 .paperclip-markdown {
-  --tw-prose-pre-bg: #1e1e2e;
-  --tw-prose-pre-code: #cdd6f4;
-  --tw-prose-invert-pre-bg: #1e1e2e;
-  --tw-prose-invert-pre-code: #cdd6f4;
+  --tw-prose-pre-bg: #440004;
+  --tw-prose-pre-code: #FFC7C2;
+  --tw-prose-invert-pre-bg: #440004;
+  --tw-prose-invert-pre-code: #FFC7C2;
 }
 
 .paperclip-markdown pre {
   border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent) !important;
   border-radius: calc(var(--radius) - 3px) !important;
-  background-color: #1e1e2e !important;
-  color: #cdd6f4 !important;
+  background-color: #001F45 !important;
+  color: #BDDAFF !important;
   padding: 0.5rem 0.65rem !important;
   margin: 0.4rem 0 !important;
   font-size: 1em !important;
@@ -1614,7 +1699,7 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
 }
 
 .paperclip-markdown a {
-  color: color-mix(in oklab, var(--foreground) 76%, #0969da 24%);
+  color: color-mix(in oklab, var(--foreground) 76%, #0C6DCE 24%);
   text-decoration: underline;
   text-underline-offset: 0.15em;
   cursor: pointer;
@@ -1654,7 +1739,7 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
 }
 
 .dark .paperclip-markdown a {
-  color: color-mix(in oklab, var(--foreground) 80%, #58a6ff 20%);
+  color: color-mix(in oklab, var(--foreground) 80%, #5CA5FF 20%);
 }
 
 .dark .paperclip-markdown.paperclip-markdown-on-accent :where(a, a:visited) {
@@ -1877,34 +1962,34 @@ span.paperclip-mention-chip[data-mention-kind="external-object"] {
    - pages/InviteUxLab.tsx (brandColor prop, x2) — demo/showcase-only prop feeding CompanyPatternIcon's hexToHue() color math, not a rendered CSS value.
 */
 :root {
-  --hex-959596: #959596; /* Muted feed actor/verb/title text (ActivityFeed.tsx, FeedCard.tsx) — PRIOR-ART-flagged gap cluster, no existing token match. */
-  --hex-1d1d1d: #1d1d1d; /* OnboardingWizard.tsx dark decorative panel background, singleton. */
-  --hex-22d3ee: #22d3ee; /* OrgChart.tsx agent status dot — 'running' (independent palette from --status-agent-*, see TOKEN-AUDIT.md 1.2). */
-  --hex-4ade80: #4ade80; /* OrgChart.tsx agent status dot — 'active'. */
-  --hex-facc15: #facc15; /* OrgChart.tsx agent status dot — 'paused' / 'idle' (shared value). */
-  --hex-f87171: #f87171; /* OrgChart.tsx agent status dot — 'error'. */
-  --hex-a3a3a3: #a3a3a3; /* OrgChart.tsx agent status dot — 'terminated' + defaultDotColor fallback. */
-  --hex-ef4444: #ef4444; /* ActivityCharts.tsx — priority 'critical'; also the <0.5 success-rate bar tint and the run-activity 'failed' segment. (Chart STATUS hues re-pointed at --status-task-* in DECISION-SHEET.md B5; priority/success series stay independent.) */
-  --hex-f97316: #f97316; /* ActivityCharts.tsx — priority 'high'. */
-  --hex-eab308: #eab308; /* ActivityCharts.tsx — priority 'medium'; also the 0.5-0.8 success-rate bar tint. */
-  --hex-6b7280: #6b7280; /* ActivityCharts.tsx — priority 'low' + unknown-status statusColors fallback. */
-  --hex-10b981: #10b981; /* ActivityCharts.tsx — >=0.8 success-rate bar tint; also the run-activity 'succeeded' segment. */
-  --hex-737373: #737373; /* ActivityCharts.tsx — run activity 'other' segment tint. */
-  --project-none: #64748b; /* Semantic rename of --hex-64748b (DECISION-SHEET.md A3, value unchanged). 'No project assigned' muted-slate fallback (TOKEN-AUDIT.md 1.3) across Routines/MarkdownEditor/RoutineRunVariablesDialog/RoutineList/IssueColumns/editable-sections; also ActivityCharts.tsx status 'backlog'. */
-  --project-seed: #6366f1; /* Semantic rename of --hex-6366f1 (DECISION-SHEET.md A3, value unchanged). Project-color-fallback indigo seed default (ProjectDetail/PipelineSettings/IssueProperties/NewIssueDialog) — new-project-color-picker-seed family per TOKEN-AUDIT.md 1.3. */
-  --liveness-blue: #2563eb; /* DECISION-SHEET.md A6: IssueChatThread.tsx human-message 'liveness blue' bubble (PAP-95 rev 5). Same value as --status-task-in_progress by coincidence, decoupled on purpose so a future status-hue change doesn't drag the chat bubble along. */
-  --app-logo-tile-1: #ff4f00;
+  --hex-959596: #949597; /* Muted feed actor/verb/title text (ActivityFeed.tsx, FeedCard.tsx) — PRIOR-ART-flagged gap cluster, no existing token match. */
+  --hex-1d1d1d: #1C1D1E; /* OnboardingWizard.tsx dark decorative panel background, singleton. */
+  --hex-22d3ee: #8EC0FF; /* OrgChart.tsx agent status dot — 'running' (independent palette from --status-agent-*, see TOKEN-AUDIT.md 1.2). */
+  --hex-4ade80: #74D791; /* OrgChart.tsx agent status dot — 'active'. */
+  --hex-facc15: #FFBFB8; /* OrgChart.tsx agent status dot — 'paused' / 'idle' (shared value). */
+  --hex-f87171: #FF6B64; /* OrgChart.tsx agent status dot — 'error'. */
+  --hex-a3a3a3: #A2A3A5; /* OrgChart.tsx agent status dot — 'terminated' + defaultDotColor fallback. */
+  --hex-ef4444: #DA5F59; /* ActivityCharts.tsx — priority 'critical'; also the <0.5 success-rate bar tint and the run-activity 'failed' segment. (Chart STATUS hues re-pointed at --status-task-* in DECISION-SHEET.md B5; priority/success series stay independent.) */
+  --hex-f97316: #9DAB00; /* ActivityCharts.tsx — priority 'high'. */
+  --hex-eab308: #DFB659; /* ActivityCharts.tsx — priority 'medium'; also the 0.5-0.8 success-rate bar tint. */
+  --hex-6b7280: #717273; /* ActivityCharts.tsx — priority 'low' + unknown-status statusColors fallback. */
+  --hex-10b981: #52B388; /* ActivityCharts.tsx — >=0.8 success-rate bar tint; also the run-activity 'succeeded' segment. */
+  --hex-737373: #727375; /* ActivityCharts.tsx — run activity 'other' segment tint. */
+  --project-none: #1571D3; /* Semantic rename of --hex-64748b (DECISION-SHEET.md A3, value unchanged). 'No project assigned' muted-slate fallback (TOKEN-AUDIT.md 1.3) across Routines/MarkdownEditor/RoutineRunVariablesDialog/RoutineList/IssueColumns/editable-sections; also ActivityCharts.tsx status 'backlog'. */
+  --project-seed: #237BDE; /* Semantic rename of --hex-6366f1 (DECISION-SHEET.md A3, value unchanged). Project-color-fallback indigo seed default (ProjectDetail/PipelineSettings/IssueProperties/NewIssueDialog) — new-project-color-picker-seed family per TOKEN-AUDIT.md 1.3. */
+  --liveness-blue: #106FD0; /* DECISION-SHEET.md A6: IssueChatThread.tsx human-message 'liveness blue' bubble (PAP-95 rev 5). Same value as --status-task-in_progress by coincidence, decoupled on purpose so a future status-hue change doesn't drag the chat bubble along. */
+  --app-logo-tile-1: #929F00;
   --app-logo-tile-2: #24292f;
-  --app-logo-tile-3: #4a154b;
-  --app-logo-tile-4: #0f172a;
-  --app-logo-tile-5: #5e6ad2;
-  --app-logo-tile-6: #1a73e8;
-  --app-logo-tile-7: #0f9d58;
-  --app-logo-tile-8: #ea4335;
-  --gradient-extract-1: linear-gradient(180deg,rgba(255,80,80,0.12),rgba(255,255,255,0.02)); /* Dashboard.tsx budget-alert card gradient. */
+  --app-logo-tile-3: #002E60;
+  --app-logo-tile-4: #001736;
+  --app-logo-tile-5: #1B75D7;
+  --app-logo-tile-6: #1E77DA;
+  --app-logo-tile-7: #449764;
+  --app-logo-tile-8: #E64746;
+  --gradient-extract-1: linear-gradient(180deg,rgba(249,89,85,0.12),rgba(255,255,255,0.02)); /* Dashboard.tsx budget-alert card gradient. */
   --gradient-extract-2: linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02)); /* Costs.tsx subtle white card gradient. */
-  --gradient-extract-3: radial-gradient(circle at top left,rgba(244,114,182,0.08),transparent 35%),radial-gradient(circle at bottom right,rgba(56,189,248,0.1),transparent 32%); /* AccountingModelCard.tsx decorative overlay. */
-  --gradient-extract-4: linear-gradient(180deg,rgba(255,70,70,0.10),rgba(255,255,255,0.02)); /* BudgetIncidentCard.tsx incident-card gradient. */
+  --gradient-extract-3: radial-gradient(circle at top left,rgba(99,169,255,0.08),transparent 35%),radial-gradient(circle at bottom right,rgba(117,178,255,0.1),transparent 32%); /* AccountingModelCard.tsx decorative overlay. */
+  --gradient-extract-4: linear-gradient(180deg,rgba(245,85,81,0.10),rgba(255,255,255,0.02)); /* BudgetIncidentCard.tsx incident-card gradient. */
   --gradient-extract-7: radial-gradient(circle at top right,rgba(255,255,255,0.22),transparent 34%),radial-gradient(circle at bottom left,rgba(255,255,255,0.08),transparent 36%); /* ProfileSettings.tsx:162 decorative overlay. */
 }
 
@@ -2122,20 +2207,20 @@ span.paperclip-mention-chip[data-mention-kind="external-object"] {
   --pct-70: 70%; /* Extracted from ui/src/components/CaseFieldsPanel.tsx (max-w-[70%]). */
   --pct-neg-50: -50%; /* Extracted from ui/src/components/ui/alert-dialog.tsx (translate-x-[-50%]). */
   --pct-72: 72%; /* Extracted from ui/src/pages/IssueDetail.tsx (w-[72%]). */
-  --shadow-extract-1: 0 16px 40px rgba(37,99,235,0.08); /* ActiveAgentsPanel.tsx live-box glow. Gallery feedback r2: liveness glow recolored cyan->status blue (value edit, site unchanged; originally extracted as rgba(6,182,212,0.08)). */
+  --shadow-extract-1: 0 16px 40px rgba(202,41,46,0.08); /* ActiveAgentsPanel.tsx live-box glow. Gallery feedback r2: liveness glow recolored cyan->status blue (value edit, site unchanged; originally extracted as rgba(255,110,103,0.08)). */
   --shadow-extract-2: 0 20px 80px -40px rgba(0,0,0,0.55); /* Extracted from ui/src/components/BudgetPolicyCard.tsx (shadow-[0_20px_80px_-40px_rgba(0,0,0,0.55)]). */
   --shadow-extract-3: 0 0 0 1px rgba(255,255,255,0.08); /* Extracted from ui/src/components/BudgetSidebarMarker.tsx (shadow-[0_0_0_1px_rgba(255,255,255,0.08)]). */
-  --shadow-extract-4: 0 -12px 28px rgba(15,23,42,0.08); /* Extracted from ui/src/components/ChatComposer.test.tsx (shadow-[0_-12px_28px_rgba(15,23,42,0.08)]). */
+  --shadow-extract-4: 0 -12px 28px rgba(0,23,54,0.08); /* Extracted from ui/src/components/ChatComposer.test.tsx (shadow-[0_-12px_28px_rgba(0,23,54,0.08)]). */
   --shadow-extract-5: 0 -12px 28px rgba(0,0,0,0.28); /* Extracted from ui/src/components/ChatComposer.test.tsx (shadow-[0_-12px_28px_rgba(0,0,0,0.28)]). */
   --shadow-extract-6: 0 0 0 1px var(--color-background); /* Extracted from ui/src/components/DocumentAnnotationLayer.tsx (shadow-[0_0_0_1px_var(--color-background)]). */
-  --shadow-extract-7: 0 -12px 28px rgba(15,23,42,0.08),0 0 0 1px hsl(var(--primary)/0.16); /* Extracted from ui/src/components/IssueChatThread.tsx (shadow-[0_-12px_28px_rgba(15,23,42,0.08),0_0_0_1px_hsl(var(--primary)/0.16)]). */
-  --shadow-extract-8: 0 1px 0 rgba(15,23,42,0.02); /* Extracted from ui/src/components/IssueRecoveryActionCard.tsx (shadow-[0_1px_0_rgba(15,23,42,0.02)]). */
-  --shadow-extract-9: 0 18px 42px rgba(15,23,42,0.06); /* Extracted from ui/src/components/IssueThreadInteractionCard.tsx (shadow-[0_18px_42px_rgba(15,23,42,0.06)]). */
+  --shadow-extract-7: 0 -12px 28px rgba(0,23,54,0.08),0 0 0 1px hsl(var(--primary)/0.16); /* Extracted from ui/src/components/IssueChatThread.tsx (shadow-[0_-12px_28px_rgba(0,23,54,0.08),0_0_0_1px_hsl(var(--primary)/0.16)]). */
+  --shadow-extract-8: 0 1px 0 rgba(0,23,54,0.02); /* Extracted from ui/src/components/IssueRecoveryActionCard.tsx (shadow-[0_1px_0_rgba(0,23,54,0.02)]). */
+  --shadow-extract-9: 0 18px 42px rgba(0,23,54,0.06); /* Extracted from ui/src/components/IssueThreadInteractionCard.tsx (shadow-[0_18px_42px_rgba(0,23,54,0.06)]). */
   --shadow-extract-10: 0 1px 0 1px hsl(var(--border)); /* Extracted from ui/src/components/KeyboardShortcutsCheatsheet.tsx (shadow-[0_1px_0_1px_hsl(var(--border))]). */
-  --shadow-extract-11: 0 18px 50px rgba(37,99,235,0.08); /* LiveRunWidget.tsx glow. Gallery feedback r2: liveness glow recolored cyan->status blue (value edit, site unchanged; originally extracted as rgba(6,182,212,0.08)). */
+  --shadow-extract-11: 0 18px 50px rgba(202,41,46,0.08); /* LiveRunWidget.tsx glow. Gallery feedback r2: liveness glow recolored cyan->status blue (value edit, site unchanged; originally extracted as rgba(255,110,103,0.08)). */
   --shadow-extract-12: 0 0 0 2px hsl(var(--background)); /* Extracted from ui/src/components/SidebarNavItem.tsx (shadow-[0_0_0_2px_hsl(var(--background))]). */
-  --shadow-extract-13: 0 0 0 3px rgba(245,158,11,0.18); /* Extracted from ui/src/components/environment-variables-editor/index.tsx (shadow-[0_0_0_3px_rgba(245,158,11,0.18)]). */
-  --shadow-extract-14: 0 0 12px rgba(37,99,235,0.08); /* AgentDetail.tsx live-card glow. Gallery feedback r2: liveness glow recolored cyan->status blue (value edit, site unchanged; originally extracted as rgba(6,182,212,0.08)). */
+  --shadow-extract-13: 0 0 0 3px rgba(176,192,0,0.18); /* Extracted from ui/src/components/environment-variables-editor/index.tsx (shadow-[0_0_0_3px_rgba(176,192,0,0.18)]). */
+  --shadow-extract-14: 0 0 12px rgba(202,41,46,0.08); /* AgentDetail.tsx live-card glow. Gallery feedback r2: liveness glow recolored cyan->status blue (value edit, site unchanged; originally extracted as rgba(255,110,103,0.08)). */
   --shadow-extract-18: 0 18px 44px -28px rgba(0,0,0,0.45); /* Extracted from ui/src/pages/ProfileSettings.tsx (shadow-[0_18px_44px_-28px_rgba(0,0,0,0.45)]). */
 }
 
@@ -2276,9 +2361,9 @@ span.paperclip-mention-chip[data-mention-kind="external-object"] {
   --blur-2px: 2px; /* Extracted from ui/src/components/IssueChatThread.tsx (backdrop-blur-[2px]). */
   --drop-shadow-extract-1: 0 1px 2px rgba(0,0,0,0.65); /* Extracted from ui/src/components/CompanyPatternIcon.tsx (drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)]). */
   --code-bg-resolved: var(--paperclip-code-bg, var(--muted)); /* Extracted from ui/src/components/FileViewerSheet.tsx (bg-[var(--paperclip-code-bg,theme(colors.muted.DEFAULT))]). */
-  --paperclip-code-highlight-bg: rgba(250,204,21,0.12); /* DECISION-SHEET.md A5: FileViewerSheet.tsx referenced this var without it ever being defined, relying on the var() fallback; minted here at exactly the former fallback value (zero pixels). */
+  --paperclip-code-highlight-bg: rgba(240,206,101,0.12); /* DECISION-SHEET.md A5: FileViewerSheet.tsx referenced this var without it ever being defined, relying on the var() fallback; minted here at exactly the former fallback value (zero pixels). */
   --paperclip-code-highlight-border: rgb(234,179,8); /* DECISION-SHEET.md A5: same as --paperclip-code-highlight-bg — minted at the former fallback value. */
-  --code-highlight-bg-resolved: var(--paperclip-code-highlight-bg); /* Extracted from ui/src/components/FileViewerSheet.tsx; fallback dropped in A5 now that --paperclip-code-highlight-bg is a real token (was var(--paperclip-code-highlight-bg, rgba(250,204,21,0.12))). */
+  --code-highlight-bg-resolved: var(--paperclip-code-highlight-bg); /* Extracted from ui/src/components/FileViewerSheet.tsx; fallback dropped in A5 now that --paperclip-code-highlight-bg is a real token (was var(--paperclip-code-highlight-bg, rgba(205,222,53,0.12))). */
   --code-gutter-fg-resolved: var(--paperclip-code-gutter-fg, var(--muted-foreground)); /* Extracted from ui/src/components/FileViewerSheet.tsx (text-[var(--paperclip-code-gutter-fg,theme(colors.muted.foreground))]). */
   --code-highlight-border-resolved: var(--paperclip-code-highlight-border); /* Extracted from ui/src/components/FileViewerSheet.tsx; fallback dropped in A5 now that --paperclip-code-highlight-border is a real token (was var(--paperclip-code-highlight-border, rgb(234,179,8))). */
   --gradient-extract-25: linear-gradient(135deg,hsl(var(--primary)) 0%,hsl(var(--accent)) 55%,hsl(var(--muted)) 100%); /* Extracted from ui/src/components/SidebarAccountMenu.tsx (bg-[linear-gradient(135deg,hsl(var(--primary))_0%,hsl(var(--accent))_55%,hsl(var(--muted))_100%)]). */

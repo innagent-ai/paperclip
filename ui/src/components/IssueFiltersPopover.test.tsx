@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 // @vitest-environment jsdom
 
 import { act } from "react";
@@ -63,7 +64,7 @@ describe("IssueFiltersPopover", () => {
           activeFilterCount={0}
           agents={[{ id: "agent-1", name: "Agent One" }]}
           projects={[{ id: "project-1", name: "Project One" }]}
-          labels={[{ id: "label-1", name: "Bug", color: "#ff0000" }]}
+          labels={[{ id: "label-1", name: "Bug", color: "#E74846" }]}
           workspaces={[{ id: "workspace-1", name: "Workspace One" }]}
           enableRoutineVisibilityFilter
         />,
@@ -93,7 +94,7 @@ describe("IssueFiltersPopover", () => {
           activeFilterCount={0}
           agents={[{ id: "agent-1", name: "Agent One" }]}
           projects={[{ id: "project-1", name: "Project One" }]}
-          labels={[{ id: "label-1", name: "Bug", color: "#ff0000" }]}
+          labels={[{ id: "label-1", name: "Bug", color: "#E74846" }]}
           workspaces={[{ id: "workspace-1", name: "Workspace One" }]}
           enableRoutineVisibilityFilter
         />,

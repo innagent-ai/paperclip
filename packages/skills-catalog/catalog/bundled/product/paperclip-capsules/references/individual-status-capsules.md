@@ -52,16 +52,16 @@ The app component currently exposes 10 gradient pairs. `AgentCapsule` wraps out-
 
 | Index | Top token | Top | Bottom token | Bottom |
 | --- | --- | --- | --- | --- |
-| 1 | `--agent-1a` | `#f7cfdc` | `--agent-1b` | `#1f7a3a` |
-| 2 | `--agent-2a` | `#c9a9e8` | `--agent-2b` | `#ee79a1` |
-| 3 | `--agent-3a` | `#28164b` | `--agent-3b` | `#7a1530` |
-| 4 | `--agent-4a` | `#f3e6c4` | `--agent-4b` | `#e3a21a` |
-| 5 | `--agent-5a` | `#1f4dd6` | `--agent-5b` | `#3aa35c` |
-| 6 | `--agent-6a` | `#e94b27` | `--agent-6b` | `#5a1122` |
-| 7 | `--agent-7a` | `#7eb6e3` | `--agent-7b` | `#ee79a1` |
-| 8 | `--agent-8a` | `#9ce8a7` | `--agent-8b` | `#bd7ff0` |
-| 9 | `--agent-9a` | `#f3b49e` | `--agent-9b` | `#1f4ed4` |
-| 10 | `--agent-10a` | `#f2d95f` | `--agent-10b` | `#4fbcba` |
+| 1 | `--agent-1a` | `#FFCEC9` | `--agent-1b` | `#3A7647` |
+| 2 | `--agent-2a` | `#87BCFF` | `--agent-2b` | `#FF726A` |
+| 3 | `--agent-3a` | `#00234B` | `--agent-3b` | `#82000F` |
+| 4 | `--agent-4a` | `#E2F552` | `--agent-4b` | `#ACBB00` |
+| 5 | `--agent-5a` | `#005DB5` | `--agent-5b` | `#579E69` |
+| 6 | `--agent-6a` | `#869300` | `--agent-6b` | `#620009` |
+| 7 | `--agent-7a` | `#75B2FF` | `--agent-7b` | `#FF726A` |
+| 8 | `--agent-8a` | `#ABE3B2` | `--agent-8b` | `#55A1FF` |
+| 9 | `--agent-9a` | `#C1D21E` | `--agent-9b` | `#005DB5` |
+| 10 | `--agent-10a` | `#D4E640` | `--agent-10b` | `#6DB7B6` |
 
 Do not treat these as the universal Paperclip capsule palette. The website brand guide exposes 12 presets, the video references have a separate 12-gradient palette, and the hero bank has 45 gradients.
 
@@ -71,8 +71,8 @@ The website palette extends the app's first 10 gradients with two more presets:
 
 | Index | Top | Bottom | Description |
 | --- | --- | --- | --- |
-| 11 | `#C2C2E8` | `#5E3450` | peri -> mauve |
-| 12 | `#4DB9B7` | `#3AA35C` | teal -> green |
+| 11 | `#9FC9FF` | `#004386` | peri -> mauve |
+| 12 | `#6BB5B3` | `#579E69` | teal -> green |
 
 Marketing capsule rules:
 
@@ -90,11 +90,11 @@ Status mapping:
 
 | Agent status | Color | Fill | Motion |
 | --- | --- | --- | --- |
-| `idle` | gray | `#A8AEB2` light, `#6E6960` dark | none |
+| `idle` | gray | `#ACADAF` light, `#696A6B` dark | none |
 | `active` | gray | same as idle | none |
-| `running` | blue | `#2563EB` | `hb-pulse` |
-| `paused` | amber | `#F59E0B` | none |
-| `error` | red | `#DC2626` | `hb-blink` |
+| `running` | blue | `#106FD0` | `hb-pulse` |
+| `paused` | amber | `#B0C000` | none |
+| `error` | red | `#D53537` | `hb-blink` |
 
 Motion timings:
 

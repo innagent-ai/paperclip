@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type {
@@ -31,7 +32,7 @@ const MOCK_DETAIL: CompanySkillDetail = {
     { path: "scripts/fetch.ts", kind: "script" },
   ],
   iconUrl: null,
-  color: "#6366f1",
+  color: "#237BDE",
   tagline: "Multi-source research with citation-grade synthesis.",
   authorName: "Astra",
   homepageUrl: null,

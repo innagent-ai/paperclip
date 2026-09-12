@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 /**
  * Work Timeline layout — pure transform from the Phase B endpoint contract
  * (`WorkTimelineResult`) into a renderable view model for the custom-SVG Gantt.
@@ -130,11 +131,11 @@ export function isCancelledStatus(status: string): boolean {
  * line marks the present.
  */
 export const TIMELINE_COLORS = {
-  delegated: "#5b9bf6",
-  automation: "#f4b740",
+  delegated: "#499CFF",
+  automation: "#BFD019",
   /** stroke/ink for a hollow, cancelled bar. */
-  cancelled: "#9aa3ad",
-  now: "#2563eb", // Gallery feedback r2: "now" liveness marker = status blue (was teal #2dd4bf); shape (1.5px vertical line) still distinguishes it from #5b9bf6 delegated bars.
+  cancelled: "#A1A2A4",
+  now: "#3B6BCD", // Gallery feedback r2: "now" liveness marker = status blue (was teal #67CEBD); shape (1.5px vertical line) still distinguishes it from #6D9CE0 delegated bars.
 } as const;
 
 export type RunSourceKind = "delegated" | "automation";

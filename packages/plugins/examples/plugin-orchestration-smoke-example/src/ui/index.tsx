@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import {
   usePluginAction,
   usePluginData,
@@ -37,8 +38,8 @@ const rowStyle = {
 } satisfies React.CSSProperties;
 
 const buttonStyle = {
-  border: "1px solid #1f2937",
-  background: "#111827",
+  border: "1px solid #28282A",
+  background: "#001837",
   color: "#fff",
   borderRadius: 6,
   padding: "6px 10px",

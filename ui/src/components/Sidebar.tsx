@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { Simbolo } from "./AnimatedPaperclipIcon";
 import { SidebarSection } from "./SidebarSection";
 import { SidebarNavItem } from "./SidebarNavItem";
 import { SidebarAgents } from "./SidebarAgents";
@@ -124,6 +125,7 @@ export function Sidebar() {
           which is the user's orientation anchor and truncates otherwise.
           Search is the first nav item below instead. */}
       <div className="flex items-center gap-1 px-3 h-12 shrink-0">
+        {!rail && <Simbolo className="mr-1" />}
         <SidebarCompanyMenu />
         {/* In the collapsed rail the toggle doesn't fit beside the logo —
             keeping it would overflow the 64px rail and squeeze the logo out of

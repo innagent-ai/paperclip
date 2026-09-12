@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { ChangeEvent, Fragment, useEffect, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
@@ -392,7 +393,7 @@ export function CompanySettings() {
                   {/* token-extraction: allowlisted — <input type="color"> value must be a real hex string, not a var() reference. */}
                   <input
                     type="color"
-                    value={brandColor || "#6366f1"}
+                    value={brandColor || "#237BDE"}
                     onChange={(e) => setBrandColor(e.target.value)}
                     className="h-8 w-8 cursor-pointer rounded border border-border bg-transparent p-0"
                   />

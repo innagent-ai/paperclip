@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { describe, expect, it } from "vitest";
 import {
   buildAgentMentionHref,
@@ -19,10 +20,10 @@ import {
 
 describe("project-mentions", () => {
   it("round-trips project mentions with color metadata", () => {
-    const href = buildProjectMentionHref("project-123", "#336699");
+    const href = buildProjectMentionHref("project-123", "#0061BC");
     expect(parseProjectMentionHref(href)).toEqual({
       projectId: "project-123",
-      color: "#336699",
+      color: "#0061BC",
     });
     expect(extractProjectMentionIds(`[@Paperclip App](${href})`)).toEqual(["project-123"]);
   });

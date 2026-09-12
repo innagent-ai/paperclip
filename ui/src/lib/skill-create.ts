@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import type {
   CompanySkillCreateRequest,
   CompanySkillDetail,
@@ -5,9 +6,9 @@ import type {
 } from "@paperclipai/shared";
 
 export const SKILL_CREATE_ACCENTS = [
-  "#6366f1", "#0ea5e9", "#10b981", "#f59e0b", "#ef4444",
-  "#8b5cf6", "#ec4899", "#14b8a6", "#f97316", "#22c55e",
-  "#3b82f6", "#a855f7",
+  "#237BDE", "#479BFF", "#52B388", "#B0C000", "#EA4B49",
+  "#2A81E4", "#F1524F", "#54B2A4", "#9DAB00", "#5ABE73",
+  "#3187EA", "#3288EC",
 ];
 
 export type SkillCreateDraft = {

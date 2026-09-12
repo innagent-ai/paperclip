@@ -38,7 +38,7 @@ Wireframes are diagnostic, not decorative. Lock these tokens on every output:
 | ---------------- | ------------------------------------------------- | -------------------------------------- |
 | Stroke           | `#000` width `1.5`                                | All borders, dividers, outlines        |
 | Fill (boxes)     | `#fff`                                            | Default for cards/containers           |
-| Placeholder fill | `#e6e6e6`                                         | Image/avatar/empty-state regions       |
+| Placeholder fill | `#E5E6E8`                                         | Image/avatar/empty-state regions       |
 | Text colour      | `#000` for labels, `#666` for placeholder text    | No other colours                       |
 | Accent           | `#d33` (dashed) — annotation layer ONLY           | Never inside real UI elements          |
 | Font             | `font-family="-apple-system, system-ui, sans-serif"` | Single typeface across the whole file  |
@@ -142,7 +142,7 @@ design/<task-slug>/
 
 **House style for the viewer** (matches the wireframes themselves):
 
-- Palette: `--bg: #fafaf8`, `--panel: #fff`, `--ink: #111`, `--muted: #666`, `--line: #e5e5e0`, `--accent: #d33` (red dashed callouts only).
+- Palette: `--bg: #F9FAFC`, `--panel: #fff`, `--ink: #111`, `--muted: #666`, `--line: #E4E5E6`, `--accent: #d33` (red dashed callouts only).
 - System font stack only: `-apple-system, system-ui, "Segoe UI", sans-serif`. No web fonts.
 - 8px-based spacing, `border-radius: 8px` on cards, 1px `--line` borders, no shadows except the hover lift on `.wire`.
 - The viewer chrome is allowed to be slightly more polished than the wireframes (subtle hover, rounded cards) — but never colourful. The wireframes themselves stay strictly monochrome.

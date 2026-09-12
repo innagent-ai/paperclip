@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 // @vitest-environment jsdom
 
 import { flushSync } from "react-dom";
@@ -848,7 +849,7 @@ describe("MarkdownEditor", () => {
         kind: "project" as const,
         name: "Paperclip App",
         projectId: "project-123",
-        projectColor: "#336699",
+        projectColor: "#0061BC",
       },
     ],
     matchText = "Paperclip App",
@@ -905,7 +906,7 @@ describe("MarkdownEditor", () => {
     });
 
     expect(handleChange).toHaveBeenCalledWith(
-      `[@Paperclip App](${buildProjectMentionHref("project-123", "#336699")}) `,
+      `[@Paperclip App](${buildProjectMentionHref("project-123", "#0061BC")}) `,
     );
 
     await act(async () => {
@@ -1008,7 +1009,7 @@ describe("MarkdownEditor", () => {
       kind: "project" as const,
       name: `Paperclip App ${index}`,
       projectId: `project-${index}`,
-      projectColor: "#336699",
+      projectColor: "#0061BC",
     }));
     const { menu, root } = await openMentionMenuFor(handleChange, mentions);
 
@@ -1036,7 +1037,7 @@ describe("MarkdownEditor", () => {
       kind: "project" as const,
       name: `Paperclip App ${index}`,
       projectId: `project-${index}`,
-      projectColor: "#336699",
+      projectColor: "#0061BC",
     }));
     const { menu, root } = await openMentionMenuFor(handleChange, mentions);
 
@@ -1062,7 +1063,7 @@ describe("MarkdownEditor", () => {
       kind: "project" as const,
       name: `Paperclip App ${index}`,
       projectId: `project-${index}`,
-      projectColor: "#336699",
+      projectColor: "#0061BC",
     }));
     const { root } = await openMentionMenuFor(handleChange, mentions);
     scrollIntoView.mockClear();

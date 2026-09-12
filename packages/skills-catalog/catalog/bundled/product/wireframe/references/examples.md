@@ -19,7 +19,7 @@ Four complete wireframes you can copy and modify. Each one is a valid standalone
 
   <!-- 2: brand mark -->
   <g transform="translate(159, 120)">
-    <rect width="56" height="56" rx="8" fill="#e6e6e6" />
+    <rect width="56" height="56" rx="8" fill="#E5E6E8" />
   </g>
 
   <!-- 3: title -->
@@ -94,7 +94,7 @@ Four complete wireframes you can copy and modify. Each one is a valid standalone
   <g transform="translate(0, 0)" data-region="sidebar">
     <rect width="240" height="800" />
     <text x="24" y="40" font-size="20" font-weight="600" stroke="none" fill="#000">Acme</text>
-    <rect x="0" y="80" width="240" height="40" fill="#e6e6e6" />
+    <rect x="0" y="80" width="240" height="40" fill="#E5E6E8" />
     <text x="24" y="105" font-size="14" stroke="none" fill="#000">Dashboard</text>
     <text x="24" y="153" font-size="14" stroke="none" fill="#666">Projects</text>
     <text x="24" y="201" font-size="14" stroke="none" fill="#666">Reports</text>
@@ -111,7 +111,7 @@ Four complete wireframes you can copy and modify. Each one is a valid standalone
       <line x1="24" y1="24" x2="30" y2="30" />
       <text x="40" y="25" font-size="14" stroke="none" fill="#666">Search…</text>
     </g>
-    <circle cx="1000" cy="32" r="16" fill="#e6e6e6" />
+    <circle cx="1000" cy="32" r="16" fill="#E5E6E8" />
   </g>
 
   <!-- 3: page header -->
@@ -156,7 +156,7 @@ Four complete wireframes you can copy and modify. Each one is a valid standalone
   <g transform="translate(264, 328)" data-region="chart">
     <rect width="640" height="320" rx="6" />
     <text x="24" y="40" font-size="20" font-weight="600" stroke="none" fill="#000">Activity</text>
-    <rect x="24" y="64" width="592" height="232" fill="#e6e6e6" />
+    <rect x="24" y="64" width="592" height="232" fill="#E5E6E8" />
     <line x1="24" y1="64" x2="616" y2="296" stroke="#666" />
     <line x1="616" y1="64" x2="24" y2="296" stroke="#666" />
   </g>
@@ -167,19 +167,19 @@ Four complete wireframes you can copy and modify. Each one is a valid standalone
     <text x="24" y="40" font-size="20" font-weight="600" stroke="none" fill="#000">Recent</text>
     <g transform="translate(0, 64)">
       <line x1="0" y1="0" x2="336" y2="0" stroke="#666" />
-      <circle cx="32" cy="28" r="12" fill="#e6e6e6" />
+      <circle cx="32" cy="28" r="12" fill="#E5E6E8" />
       <text x="56" y="24" font-size="14" font-weight="600" stroke="none" fill="#000">Item one</text>
       <text x="56" y="40" font-size="12" stroke="none" fill="#666">2h ago</text>
     </g>
     <g transform="translate(0, 120)">
       <line x1="0" y1="0" x2="336" y2="0" stroke="#666" />
-      <circle cx="32" cy="28" r="12" fill="#e6e6e6" />
+      <circle cx="32" cy="28" r="12" fill="#E5E6E8" />
       <text x="56" y="24" font-size="14" font-weight="600" stroke="none" fill="#000">Item two</text>
       <text x="56" y="40" font-size="12" stroke="none" fill="#666">5h ago</text>
     </g>
     <g transform="translate(0, 176)">
       <line x1="0" y1="0" x2="336" y2="0" stroke="#666" />
-      <circle cx="32" cy="28" r="12" fill="#e6e6e6" />
+      <circle cx="32" cy="28" r="12" fill="#E5E6E8" />
       <text x="56" y="24" font-size="14" font-weight="600" stroke="none" fill="#000">Item three</text>
       <text x="56" y="40" font-size="12" stroke="none" fill="#666">1d ago</text>
     </g>
@@ -208,13 +208,13 @@ Four complete wireframes you can copy and modify. Each one is a valid standalone
   <g transform="translate(0, 0)">
     <rect width="1280" height="64" />
     <text x="24" y="40" font-size="20" font-weight="600" stroke="none" fill="#000">Settings</text>
-    <circle cx="1240" cy="32" r="16" fill="#e6e6e6" />
+    <circle cx="1240" cy="32" r="16" fill="#E5E6E8" />
   </g>
 
   <!-- 2: settings nav (left rail) -->
   <g transform="translate(24, 96)">
     <text x="0" y="14" font-size="12" font-weight="600" stroke="none" fill="#666">PERSONAL</text>
-    <rect x="-8" y="32" width="216" height="32" fill="#e6e6e6" />
+    <rect x="-8" y="32" width="216" height="32" fill="#E5E6E8" />
     <text x="0" y="52" font-size="14" stroke="none" fill="#000">Account</text>
     <text x="0" y="84" font-size="14" stroke="none" fill="#666">Notifications</text>
     <text x="0" y="116" font-size="14" stroke="none" fill="#666">Sessions</text>
@@ -233,7 +233,7 @@ Four complete wireframes you can copy and modify. Each one is a valid standalone
     <g transform="translate(0, 96)">
       <text x="0" y="14" font-size="14" font-weight="600" stroke="none" fill="#000">Profile photo</text>
       <g transform="translate(0, 24)">
-        <circle cx="32" cy="32" r="32" fill="#e6e6e6" />
+        <circle cx="32" cy="32" r="32" fill="#E5E6E8" />
         <line x1="9" y1="9" x2="55" y2="55" stroke="#666" />
         <line x1="55" y1="9" x2="9" y2="55" stroke="#666" />
       </g>

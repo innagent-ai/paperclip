@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { describe, expect, it } from "vitest";
 import type { CompanyMember, CompanyUserDirectoryEntry } from "@/api/access";
 import {
@@ -73,13 +74,13 @@ describe("company-members helpers", () => {
     const options = buildMarkdownMentionOptions({
       members: [activeMember({ principalId: "user-1", user: { id: "user-1", name: "Taylor", email: "taylor@example.com", image: null } })],
       agents: [{ id: "agent-1", name: "CodexCoder", status: "active", icon: "code" }],
-      projects: [{ id: "project-1", name: "Paperclip App", color: "#336699" }],
+      projects: [{ id: "project-1", name: "Paperclip App", color: "#0061BC" }],
     });
 
     expect(options).toEqual([
       { id: "user:user-1", name: "Taylor", kind: "user", userId: "user-1" },
       { id: "agent:agent-1", name: "CodexCoder", kind: "agent", agentId: "agent-1", agentIcon: "code" },
-      { id: "project:project-1", name: "Paperclip App", kind: "project", projectId: "project-1", projectColor: "#336699" },
+      { id: "project:project-1", name: "Paperclip App", kind: "project", projectId: "project-1", projectColor: "#0061BC" },
     ]);
   });
 
@@ -110,7 +111,7 @@ describe("company-members helpers", () => {
   it("appends issue mention options after agents and projects, preserving order", () => {
     const options = buildMarkdownMentionOptions({
       agents: [{ id: "agent-1", name: "CodexCoder", status: "active", icon: "code" }],
-      projects: [{ id: "project-1", name: "Paperclip App", color: "#336699" }],
+      projects: [{ id: "project-1", name: "Paperclip App", color: "#0061BC" }],
       issues: [
         { id: "issue-2", identifier: "PAP-50", title: "Newer" },
         { id: "issue-1", identifier: "PAP-3", title: "Older" },

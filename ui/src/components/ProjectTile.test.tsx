@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { ProjectTile } from "./ProjectTile";
@@ -25,8 +26,8 @@ describe("ProjectTile", () => {
   });
 
   it("tints the background when a color is provided", () => {
-    const markup = renderToStaticMarkup(<ProjectTile color="#22c55e" />);
-    expect(markup).toContain("background-color:#22c55e");
+    const markup = renderToStaticMarkup(<ProjectTile color="#5ABE73" />);
+    expect(markup).toContain("background-color:#5ABE73");
     expect(markup).toContain("text-white");
     // Tinted tile drops the muted neutral background.
     expect(markup).not.toContain("bg-muted");

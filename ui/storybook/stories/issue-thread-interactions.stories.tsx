@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { useEffect, useRef, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { IssueChatThread } from "@/components/IssueChatThread";
@@ -1160,7 +1161,7 @@ export const ReviewSurface: Story = {
           title="IssueChatThread composition"
           description="Comments, timeline events, accepted task suggestions, a pending confirmation, a pending question form, and an active run share the same feed."
         >
-          <div className="overflow-hidden rounded-[32px] border border-border/70 bg-[linear-gradient(135deg,rgba(14,165,233,0.08),transparent_28%),linear-gradient(180deg,rgba(245,158,11,0.08),transparent_42%),var(--background)] p-5 shadow-[0_30px_80px_rgba(15,23,42,0.10)]">
+          <div className="overflow-hidden rounded-[32px] border border-border/70 bg-[linear-gradient(135deg,rgba(71,155,255,0.08),transparent_28%),linear-gradient(180deg,rgba(176,192,0,0.08),transparent_42%),var(--background)] p-5 shadow-[0_30px_80px_rgba(0,23,54,0.10)]">
             <IssueChatThread
               comments={issueThreadInteractionComments}
               interactions={mixedIssueThreadInteractions}
