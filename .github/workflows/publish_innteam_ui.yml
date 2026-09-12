@@ -1,12 +1,16 @@
-# Constrói a UI do InnTeam (Paperclip com a IDV do InnAgent) e a devolve como artifact.
+# Constrói a imagem do InnTeam (Paperclip com a IDV do InnAgent), publica no GHCR
+# e devolve a `ui-dist` como artifact.
 #
 # Por que existe: o build local na manager01 foi morto por falta de memória em 8 das 11
 # tentativas de 08-09/09, mesmo com --memory, NODE_OPTIONS=1536 e nice -n 19. O runner
 # tem a folga que ela não tem.
 #
-# Diferente dos outros dois motores, aqui NÃO se publica imagem: a produção roda o pacote
-# npm do Paperclip e o ExecStartPre substitui a `ui-dist` por cima. Então o que viaja é a
-# pasta buildada, não um tarball de imagem — mais leve que o InnChat e o InnTask.
+# 12/09/2026 — passou a PUBLICAR IMAGEM. Antes só o artifact da UI viajava, porque a
+# produção rodava o pacote npm (`npx paperclipai@<versão>`) e o ExecStartPre trocava a
+# `ui-dist` por cima. Esse arranjo era a dívida #1 do veredito de 05/09: versão resolvida
+# em tempo de boot, 1,1 GB de cache npx no host e um hash de cache colado no unit. Agora a
+# produção roda ESTA imagem, e a ui-dist continua saindo como artifact para quem precisar
+# dela solta.
 name: Publish InnTeam UI
 
 on:
@@ -21,10 +25,13 @@ on:
 
 permissions:
   contents: read
+  packages: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      IMAGE: ghcr.io/innagent-ai/paperclip
     steps:
       - uses: actions/checkout@v4
         with:
@@ -72,6 +79,33 @@ jobs:
             fi
           done
           test "$falhas" = "0" || { echo "$falhas problema(s) no tema"; exit 1; }
+
+      # Guarda do runtime: a produção passa a rodar a imagem, então os binários que os
+      # agentes executam precisam estar DENTRO dela. Sem isto, um build verde derruba
+      # todo run de agente por "command not found" só depois do deploy.
+      - name: Prova — claude e codex existem na imagem
+        run: |
+          docker run --rm --entrypoint sh paperclip-innagent:${{ inputs.tag }} -c \
+            'command -v claude && command -v codex && node --version'
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Tag por VERSÃO (imutável, é a que a produção fixa) + `innagent-latest` por
+      # conveniência. A produção nunca deve apontar para latest: ver o unit em
+      # /etc/systemd/system/paperclip.service na worker01.
+      - name: Publicar no GHCR
+        run: |
+          docker tag paperclip-innagent:${{ inputs.tag }} "$IMAGE:${{ inputs.tag }}-innagent"
+          docker tag paperclip-innagent:${{ inputs.tag }} "$IMAGE:innagent-latest"
+          docker push "$IMAGE:${{ inputs.tag }}-innagent"
+          docker push "$IMAGE:innagent-latest"
+          echo "publicado: $IMAGE:${{ inputs.tag }}-innagent"
+          docker image inspect "$IMAGE:${{ inputs.tag }}-innagent" \
+            --format 'digest={{index .RepoDigests 0}}' || true
 
       - uses: actions/upload-artifact@v4
         with:
