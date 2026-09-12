@@ -76,15 +76,19 @@ jobs:
           # Cor de fábrica: TETO QUE SÓ DESCE.
           #
           # Três destas já morreram e o teto delas é zero. As outras duas — âmbar e azul —
-          # estão VIVAS na UI que está no ar (medido em 12/09 no CSS servido pela worker01:
-          # 27 e 23 ocorrências). A guarda pedia zero e por isso nunca passou verde nesta
-          # branch: ela reprovava o próprio status quo, e com isso bloqueava entregas que
-          # nada têm a ver com cor — foi o que travou a publicação da imagem.
+          # continuam vivas: 11 e 7 ocorrências na SAÍDA DESTE BUILD (medido em 12/09).
+          # A guarda pedia zero e por isso nunca passou verde nesta branch: reprovava o
+          # próprio status quo, e com isso bloqueava entregas que nada têm a ver com cor —
+          # foi o que travou a publicação da imagem.
+          #
+          # O teto se calibra pela saída do BUILD, nunca pelo artefato em produção: o CSS
+          # servido hoje tem 27 e 23 porque é mais velho que a branch. Calibrar por ele
+          # daria um teto frouxo que deixaria passar uma regressão de 16 ocorrências.
           #
           # Não se esconde a dívida baixando a guarda para "ignore essas duas": trava-se no
           # número de hoje. Quem piorar reprova; quem melhorar, atualiza o teto para baixo.
           # (Mesmo padrão dos controles crus do app, martelado em 06/08.)
-          declare -A TETO=( ["#F99C00"]=0 ["#FB2C36"]=0 ["#00A5EF"]=0 ["#F59E0B"]=27 ["#2563EB"]=23 )
+          declare -A TETO=( ["#F99C00"]=0 ["#FB2C36"]=0 ["#00A5EF"]=0 ["#F59E0B"]=11 ["#2563EB"]=7 )
           for velha in "${!TETO[@]}"; do
             n=$(echo "$css" | grep -oiF "$velha" | wc -l)
             teto=${TETO[$velha]}
