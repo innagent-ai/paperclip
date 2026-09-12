@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 // @vitest-environment jsdom
 
 import { createElement } from "react";
@@ -565,7 +566,7 @@ describe("WikiPage", () => {
                   maxCharacters: 12000,
                 },
                 agentOptions: [{ id: "agent-1", name: "Wiki Maintainer", status: "idle", icon: "book-open", urlKey: "wiki-maintainer" }],
-                projectOptions: [{ id: "project-1", name: "LLM Wiki", status: "in_progress", color: "#2563eb" }],
+                projectOptions: [{ id: "project-1", name: "LLM Wiki", status: "in_progress", color: "#106FD0" }],
                 capabilities: [],
               },
               loading: false,

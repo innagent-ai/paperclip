@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type {
   CompanySearchFilterOptionCounts,
@@ -577,8 +578,8 @@ const searchFilterData: SearchFilterDataProps = {
   agents: storybookAgents.map((agent) => ({ id: agent.id, name: agent.name })),
   projects: storybookProjects.map((project) => ({ id: project.id, name: project.name })),
   labels: [
-    { id: "label-infra", name: "infra", color: "#a78bfa" },
-    { id: "label-auth", name: "auth", color: "#34d399" },
+    { id: "label-infra", name: "infra", color: "#58A3FF" },
+    { id: "label-auth", name: "auth", color: "#68CCA0" },
   ],
   currentUserId: "user-1",
 };

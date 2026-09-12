@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { ReactNode } from "react";
 import type { IssueRecoveryAction, IssueRelationIssueSummary } from "@paperclipai/shared";
@@ -459,7 +460,7 @@ function ActiveRunCardMock({
   recoveryState: RunCardRecoveryState;
 }) {
   return (
-    <div className="flex h-[260px] w-full max-w-[320px] flex-col overflow-hidden rounded-xl border border-cyan-500/25 bg-cyan-500/[0.04] shadow-[0_16px_40px_rgba(6,182,212,0.08)]">
+    <div className="flex h-[260px] w-full max-w-[320px] flex-col overflow-hidden rounded-xl border border-cyan-500/25 bg-cyan-500/[0.04] shadow-[0_16px_40px_rgba(92,165,255,0.08)]">
       <div className="border-b border-border/60 px-3 py-3">
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">

@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 // @vitest-environment jsdom
 
 import type { ComponentProps, ReactNode } from "react";
@@ -271,7 +272,7 @@ function createLabel(overrides: Partial<IssueLabel> = {}): IssueLabel {
     id: "label-1",
     companyId: "company-1",
     name: "Bug",
-    color: "#ef4444",
+    color: "#EA4B49",
     createdAt: new Date("2026-04-06T12:00:00.000Z"),
     updatedAt: new Date("2026-04-06T12:00:00.000Z"),
     ...overrides,
@@ -380,7 +381,7 @@ function createProject(overrides: Partial<Project> = {}): Project {
     status: "in_progress",
     leadAgentId: null,
     targetDate: null,
-    color: "#6366f1",
+    color: "#237BDE",
     icon: null,
     env: null,
     pauseReason: null,
@@ -476,7 +477,7 @@ describe("IssueProperties", () => {
     mockIssuesApi.createLabel.mockResolvedValue(createLabel({
       id: "label-new",
       name: "New label",
-      color: "#6366f1",
+      color: "#237BDE",
     }));
     mockIssuesApi.upsertWatchdog.mockResolvedValue({});
     mockIssuesApi.deleteWatchdog.mockResolvedValue({ ok: true });
@@ -1815,7 +1816,7 @@ describe("IssueProperties", () => {
   it("shows an add-label button when labels already exist and opens the picker", async () => {
     const root = renderProperties(container, {
       issue: createIssue({
-        labels: [{ id: "label-1", companyId: "company-1", name: "Bug", color: "#ef4444", createdAt: new Date("2026-04-06T12:00:00.000Z"), updatedAt: new Date("2026-04-06T12:00:00.000Z") }],
+        labels: [{ id: "label-1", companyId: "company-1", name: "Bug", color: "#EA4B49", createdAt: new Date("2026-04-06T12:00:00.000Z"), updatedAt: new Date("2026-04-06T12:00:00.000Z") }],
         labelIds: ["label-1"],
       }),
       childIssues: [],
@@ -2003,7 +2004,7 @@ describe("IssueProperties", () => {
   it("shows a checkmark on selected labels in the picker", async () => {
     mockIssuesApi.listLabels.mockResolvedValue([
       createLabel(),
-      createLabel({ id: "label-2", name: "Feature", color: "#22c55e" }),
+      createLabel({ id: "label-2", name: "Feature", color: "#5ABE73" }),
     ]);
 
     const root = renderProperties(container, {

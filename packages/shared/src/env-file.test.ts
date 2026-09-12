@@ -1,10 +1,11 @@
+// innagent: status derivados dos tokens da marca
 import { describe, expect, it } from "vitest";
 import { encodeEnvValue, updateEnvFileContents } from "./env-file.js";
 
 describe("env file editor", () => {
   it("pins minimal and JSON value encoding", () => {
     expect(encodeEnvValue("plain-value", "minimal")).toBe("plain-value");
-    expect(encodeEnvValue("#439edb", "minimal")).toBe('"#439edb"');
+    expect(encodeEnvValue("#4196FB", "minimal")).toBe('"#4196FB"');
     expect(encodeEnvValue("plain-value", "json")).toBe('"plain-value"');
   });
 
@@ -25,7 +26,7 @@ describe("env file editor", () => {
       {
         PAPERCLIP_HOME: "/new path",
         PAPERCLIP_DUPLICATE: "current",
-        PAPERCLIP_WORKTREE_COLOR: "#439edb",
+        PAPERCLIP_WORKTREE_COLOR: "#4196FB",
       },
       { valueEncoding: "minimal" },
     );
@@ -38,7 +39,7 @@ describe("env file editor", () => {
       "PAPERCLIP_DUPLICATE=current",
       'PAPERCLIP_DUPLICATE="current"',
       "TRAILING=untouched",
-      'PAPERCLIP_WORKTREE_COLOR="#439edb"',
+      'PAPERCLIP_WORKTREE_COLOR="#4196FB"',
       "",
     ].join("\r\n"));
     expect(updated.replaceAll("\r\n", "")).not.toContain("\n");
@@ -74,15 +75,15 @@ describe("env file editor", () => {
   it("does not treat an unquoted dotenv comment as the managed value", () => {
     expect(
       updateEnvFileContents(
-        ["PAPERCLIP_COLOR=#439edb", "PAPERCLIP_HOME=old# keep this comment"].join("\n"),
+        ["PAPERCLIP_COLOR=#4196FB", "PAPERCLIP_HOME=old# keep this comment"].join("\n"),
         {
-          PAPERCLIP_COLOR: "#439edb",
+          PAPERCLIP_COLOR: "#4196FB",
           PAPERCLIP_HOME: "new",
         },
         { valueEncoding: "minimal" },
       ),
     ).toBe(
-      ['PAPERCLIP_COLOR="#439edb"#439edb', "PAPERCLIP_HOME=new# keep this comment"].join("\n"),
+      ['PAPERCLIP_COLOR="#4196FB"#4196FB', "PAPERCLIP_HOME=new# keep this comment"].join("\n"),
     );
   });
 

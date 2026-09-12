@@ -10,3 +10,9 @@ tmp
 *.log
 packages/paperclip-runner/dist
 packages/paperclip-runner/runner/target
+
+# innagent: doc nao vai para a imagem — o Tailwind v4 detecta fonte a partir da
+# raiz e um `border-[#2563EB]` escrito num markdown de decisao virava classe
+# no CSS de producao. Documentacao nao e fonte de UI.
+doc/
+scripts/codemod-extract-colors.mjs

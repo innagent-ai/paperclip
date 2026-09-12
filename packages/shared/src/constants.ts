@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 export const COMPANY_STATUSES = ["active", "paused", "archived"] as const;
 export type CompanyStatus = (typeof COMPANY_STATUSES)[number];
 
@@ -674,16 +675,16 @@ export const PAUSE_REASONS = ["manual", "budget", "system", "company_archived", 
 export type PauseReason = (typeof PAUSE_REASONS)[number];
 
 export const PROJECT_COLORS = [
-  "#6366f1", // indigo
-  "#8b5cf6", // violet
-  "#ec4899", // pink
-  "#ef4444", // red
-  "#f97316", // orange
-  "#eab308", // yellow
-  "#22c55e", // green
-  "#14b8a6", // teal
-  "#06b6d4", // cyan
-  "#3b82f6", // blue
+  "#237BDE", // indigo
+  "#2A81E4", // violet
+  "#F1524F", // pink
+  "#EA4B49", // red
+  "#9DAB00", // orange
+  "#B8C900", // yellow
+  "#5ABE73", // green
+  "#54B2A4", // teal
+  "#5CA5FF", // cyan
+  "#3187EA", // blue
 ] as const;
 
 export const APPROVAL_TYPES = [

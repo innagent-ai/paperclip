@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 // @vitest-environment jsdom
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -137,7 +138,7 @@ function project(overrides: Partial<Project> = {}): Project {
     status: "in_progress",
     leadAgentId: null,
     targetDate: null,
-    color: "#14b8a6",
+    color: "#54B2A4",
     icon: null,
     env: null,
     pauseReason: null,

@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 // @vitest-environment jsdom
 
 import type { ComponentProps, ReactNode } from "react";
@@ -349,7 +350,7 @@ describe("NewIssueDialog", () => {
         name: "Alpha",
         description: null,
         archivedAt: null,
-        color: "#445566",
+        color: "#0051A0",
       },
     ]);
     mockAgentsApi.list.mockResolvedValue([]);
@@ -419,7 +420,7 @@ describe("NewIssueDialog", () => {
         name: "Alpha",
         description: null,
         archivedAt: null,
-        color: "#445566",
+        color: "#0051A0",
         executionWorkspacePolicy: {
           enabled: true,
           defaultMode: "shared_workspace",
@@ -525,7 +526,7 @@ describe("NewIssueDialog", () => {
         name: "Alpha",
         description: null,
         archivedAt: null,
-        color: "#445566",
+        color: "#0051A0",
         env: {
           PROJECT_TOKEN: { type: "user_secret_ref", key: "project_token", required: true },
         },
@@ -650,7 +651,7 @@ describe("NewIssueDialog", () => {
         name: "Alpha",
         description: null,
         archivedAt: null,
-        color: "#445566",
+        color: "#0051A0",
         workspaces: [
           {
             id: "project-workspace-1",
@@ -731,7 +732,7 @@ describe("NewIssueDialog", () => {
         name: "Alpha",
         description: null,
         archivedAt: null,
-        color: "#445566",
+        color: "#0051A0",
         workspaces: [
           {
             id: "project-workspace-1",
@@ -805,7 +806,7 @@ describe("NewIssueDialog", () => {
           name: "Alpha",
           description: null,
           archivedAt: null,
-          color: "#445566",
+          color: "#0051A0",
         },
       ]);
       await Promise.resolve();
@@ -1285,7 +1286,7 @@ describe("NewIssueDialog", () => {
         name: "Alpha",
         description: null,
         archivedAt: null,
-        color: "#445566",
+        color: "#0051A0",
         executionWorkspacePolicy: {
           enabled: true,
           defaultMode: "shared_workspace",

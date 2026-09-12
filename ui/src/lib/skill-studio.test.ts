@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { describe, expect, it } from "vitest";
 import type {
   CompanySkillLastEditor,
@@ -465,7 +466,7 @@ describe("agent picker + run labels", () => {
   });
 
   it("builds a short run id", () => {
-    expect(runShortId({ id: "abcdef01-2345-6789-abcd-ef0123456789" })).toBe("#abcdef0");
+    expect(runShortId({ id: "abcdef01-2345-6789-abcd-ef0123456789" })).toBe("#A4CCFF0");
   });
 
   it("finds the output document by the run's output key", () => {

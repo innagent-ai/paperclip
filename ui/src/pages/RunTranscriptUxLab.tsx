@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 // token-extraction: allowlisted — intentional one-off decoration (DECISION-SHEET.md B1
 // user ruling). The bg-[...gradient...] / shadow-[...] literals in this demo/UX-lab page
 // are deliberate one-off decoration, reverted from --gradient-extract-*/--shadow-extract-*
@@ -64,7 +65,7 @@ function RunDetailPreview({
   density: TranscriptDensity;
 }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-border/70 bg-background/80 shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
+    <div className="overflow-hidden rounded-xl border border-border/70 bg-background/80 shadow-[0_24px_60px_rgba(0,23,54,0.08)]">
       <div className="border-b border-border/60 bg-background/90 px-5 py-4">
         <div className="flex flex-wrap items-center gap-2">
           <Badge variant="outline" className="uppercase tracking-(--tracking-caps) text-(length:--text-nano)">
@@ -79,7 +80,7 @@ function RunDetailPreview({
           Transcript ({runTranscriptFixtureEntries.length})
         </div>
       </div>
-      <div className="max-h-(--sz-720px) overflow-y-auto bg-[radial-gradient(circle_at_top_left,rgba(8,145,178,0.08),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.10),transparent_28%)] p-5">
+      <div className="max-h-(--sz-720px) overflow-y-auto bg-[radial-gradient(circle_at_top_left,rgba(44,131,230,0.08),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(176,192,0,0.10),transparent_28%)] p-5">
         <RunTranscriptView
           entries={runTranscriptFixtureEntries}
           mode={mode}
@@ -101,7 +102,7 @@ function LiveWidgetPreview({
   density: TranscriptDensity;
 }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-cyan-500/25 bg-background/85 shadow-[0_20px_50px_rgba(6,182,212,0.10)]">
+    <div className="overflow-hidden rounded-xl border border-cyan-500/25 bg-background/85 shadow-[0_20px_50px_rgba(92,165,255,0.10)]">
       <div className="border-b border-border/60 bg-cyan-500/[0.05] px-5 py-4">
         <div className="text-xs font-semibold uppercase tracking-(--tracking-caps) text-cyan-700 dark:text-cyan-300">
           Live Runs
@@ -153,7 +154,7 @@ function DashboardPreview({
   return (
     <div className="max-w-md">
       <div className={cn(
-        "flex h-(--sz-320px) flex-col overflow-hidden rounded-xl border shadow-[0_20px_40px_rgba(15,23,42,0.10)]",
+        "flex h-(--sz-320px) flex-col overflow-hidden rounded-xl border shadow-[0_20px_40px_rgba(0,23,54,0.10)]",
         streaming
           ? "border-cyan-500/25 bg-cyan-500/[0.04]"
           : "border-border bg-background/75",
@@ -164,7 +165,7 @@ function DashboardPreview({
               <div className="flex items-center gap-2">
                 <span className={cn(
                   "inline-flex h-2.5 w-2.5 rounded-full",
-                  streaming ? "bg-cyan-500 shadow-[0_0_0_6px_rgba(34,211,238,0.12)]" : "bg-muted-foreground/35",
+                  streaming ? "bg-cyan-500 shadow-[0_0_0_6px_rgba(142,192,255,0.12)]" : "bg-muted-foreground/35",
                 )} />
                 <Identity name={runTranscriptFixtureMeta.agentName} size="sm" />
               </div>
@@ -204,7 +205,7 @@ export function RunTranscriptUxLab() {
 
   return (
     <div className="space-y-6">
-      <div className="overflow-hidden rounded-2xl border border-border/70 bg-[linear-gradient(135deg,rgba(8,145,178,0.08),transparent_28%),linear-gradient(180deg,rgba(245,158,11,0.08),transparent_40%),var(--background)] shadow-[0_28px_70px_rgba(15,23,42,0.10)]">
+      <div className="overflow-hidden rounded-2xl border border-border/70 bg-[linear-gradient(135deg,rgba(44,131,230,0.08),transparent_28%),linear-gradient(180deg,rgba(176,192,0,0.08),transparent_40%),var(--background)] shadow-[0_28px_70px_rgba(0,23,54,0.10)]">
         <div className="grid gap-6 lg:grid-cols-(--gtc-19)">
           <aside className="border-b border-border/60 bg-background/75 p-5 lg:border-b-0 lg:border-r">
             <div className="mb-5">
@@ -229,7 +230,7 @@ export function RunTranscriptUxLab() {
                     className={cn(
                       "w-full rounded-xl border px-4 py-3 text-left transition-all",
                       selectedSurface === option.id
-                        ? "border-cyan-500/35 bg-cyan-500/[0.10] shadow-[0_12px_24px_rgba(6,182,212,0.12)]"
+                        ? "border-cyan-500/35 bg-cyan-500/[0.10] shadow-[0_12px_24px_rgba(92,165,255,0.12)]"
                         : "border-border/70 bg-background/70 hover:border-cyan-500/20 hover:bg-cyan-500/[0.04]",
                     )}
                   >

@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Folder } from "lucide-react";
@@ -20,7 +21,7 @@ const ENABLED: AgentSkillRowData = {
 const AVAILABLE: AgentSkillRowData = {
   key: "para-memory-files",
   name: "para-memory-files",
-  icon: { key: "para-memory-files", name: "para-memory-files", slug: "para", iconUrl: null, color: "#7c3aed" },
+  icon: { key: "para-memory-files", name: "para-memory-files", slug: "para", iconUrl: null, color: "#0D6DCF" },
   summary: "File-based memory system using Tiago Forte's PARA method.",
   chip: "memory",
   sourceMeta: { icon: Folder, label: "Local folder" },

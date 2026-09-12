@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { AnimatePresence, motion } from "motion/react";
 
 import { cn } from "../../lib/utils";
@@ -34,8 +35,8 @@ function DormantPill() {
     <svg viewBox="0 0 100 93" fill="none" aria-hidden className="size-full">
       <path d={BODY_PATH} fill={`url(#${DORMANT_GRADIENT_ID})`} />
       {/* Closed eyes: the same rounded rects as the open pair, flattened. */}
-      <rect x="75.9199" y="66.3047" width="9" height="4" rx="2" fill="#060606" />
-      <rect x="28.9199" y="66.3047" width="9" height="4" rx="2" fill="#060606" />
+      <rect x="75.9199" y="66.3047" width="9" height="4" rx="2" fill="#060607" />
+      <rect x="28.9199" y="66.3047" width="9" height="4" rx="2" fill="#060607" />
       <defs>
         <linearGradient
           id={DORMANT_GRADIENT_ID}
@@ -45,8 +46,8 @@ function DormantPill() {
           y2="107.486"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#626262" />
-          <stop offset="1" stopColor="#101010" />
+          <stop stopColor="#616264" />
+          <stop offset="1" stopColor="#0F1011" />
         </linearGradient>
       </defs>
     </svg>
@@ -57,9 +58,9 @@ function AlivePill() {
   return (
     <svg viewBox="0 0 100 93" fill="none" aria-hidden className="size-full">
       <path d={BODY_PATH} fill={`url(#${ALIVE_GRADIENT_ID})`} />
-      <rect x="76.1406" y="63.1328" width="8.87072" height="10.3492" rx="4.43536" fill="#060606" />
-      <rect x="28.8301" y="63.1328" width="8.87072" height="10.3492" rx="4.43536" fill="#060606" />
-      <path d={TUFT_PATH} fill="#2D200D" />
+      <rect x="76.1406" y="63.1328" width="8.87072" height="10.3492" rx="4.43536" fill="#060607" />
+      <rect x="28.8301" y="63.1328" width="8.87072" height="10.3492" rx="4.43536" fill="#060607" />
+      <path d={TUFT_PATH} fill="#222600" />
       <defs>
         <linearGradient
           id={ALIVE_GRADIENT_ID}
@@ -69,8 +70,8 @@ function AlivePill() {
           y2="107.486"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#3028AA" />
-          <stop offset="1" stopColor="#FF0000" />
+          <stop stopColor="#004386" />
+          <stop offset="1" stopColor="#E74846" />
         </linearGradient>
       </defs>
     </svg>

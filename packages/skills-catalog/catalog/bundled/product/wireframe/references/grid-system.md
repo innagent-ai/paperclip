@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 # Grid, palette, and type scale
 
 These are the only values you may use. Do not introduce new colours, sizes, or grid units.
@@ -46,8 +47,8 @@ In practice, snap to common widths:
 | Ink              | `#000`     | Strokes, primary text                                    |
 | Paper            | `#fff`     | Default fill                                             |
 | Mute text        | `#666`     | Placeholder text inside inputs, secondary labels         |
-| Placeholder grey | `#e6e6e6`  | Image/avatar/empty-state regions                         |
-| Subtle grey      | `#f4f4f4`  | Optional zebra rows in tables; nothing else              |
+| Placeholder grey | `#E5E6E8`  | Image/avatar/empty-state regions                         |
+| Subtle grey      | `#F3F4F6`  | Optional zebra rows in tables; nothing else              |
 | Annotation red   | `#d33`     | Annotation layer ONLY — dashed borders, callout numbers  |
 
 That's the entire palette. No hover states, no focus rings, no brand colours.

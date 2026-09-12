@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 // @vitest-environment jsdom
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -1672,7 +1673,7 @@ describe("IssueDetail", () => {
       createdByUserId: "user-1",
     }));
     mockAgentsApi.list.mockResolvedValue([createAgent({ name: "CodexCoder" })]);
-    mockProjectsApi.list.mockResolvedValue([{ id: "project-1", name: "Core Product", color: "#2563eb" }]);
+    mockProjectsApi.list.mockResolvedValue([{ id: "project-1", name: "Core Product", color: "#106FD0" }]);
     mockAccessApi.listUserDirectory.mockResolvedValue({
       users: [
         {

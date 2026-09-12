@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { useEffect, useRef, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
@@ -405,10 +406,10 @@ function projectsRollupStory() {
   }
 
   const projects = [
-    { name: "Paperclip App", color: "#6366f1", summary: summary({ failed: 3, running: 12 }) },
-    { name: "Marketing site", color: "#22c55e", summary: summary({ waiting: 2 }) },
-    { name: "Experimental", color: "#a855f7", summary: summary({ succeeded: 6 }) },
-    { name: "Auth provider", color: "#f97316", summary: summary({ auth: 1 }) },
+    { name: "Paperclip App", color: "#237BDE", summary: summary({ failed: 3, running: 12 }) },
+    { name: "Marketing site", color: "#5ABE73", summary: summary({ waiting: 2 }) },
+    { name: "Experimental", color: "#3288EC", summary: summary({ succeeded: 6 }) },
+    { name: "Auth provider", color: "#9DAB00", summary: summary({ auth: 1 }) },
   ];
   return (
     <div className="paperclip-story w-72 rounded border border-border bg-background p-2">
@@ -582,9 +583,9 @@ function SidebarMobileDrawer() {
       <div className="mb-2 text-xs uppercase tracking-wide text-muted-foreground">Projects (mobile drawer)</div>
       <ul className="flex flex-col">
         {[
-          { name: "Paperclip App", color: "#6366f1", summary },
-          { name: "Marketing site", color: "#22c55e", summary: { ...summary, highestSeverity: "warning", byStatusCategory: { waiting: 2 }, total: 2, objects: [] } },
-          { name: "Experimental", color: "#a855f7", summary: { ...summary, highestSeverity: "muted", byStatusCategory: {}, total: 0, objects: [] } },
+          { name: "Paperclip App", color: "#237BDE", summary },
+          { name: "Marketing site", color: "#A2B100", summary: { ...summary, highestSeverity: "warning", byStatusCategory: { waiting: 2 }, total: 2, objects: [] } },
+          { name: "Experimental", color: "#3288EC", summary: { ...summary, highestSeverity: "muted", byStatusCategory: {}, total: 0, objects: [] } },
         ].map((project) => (
           <li
             key={project.name}

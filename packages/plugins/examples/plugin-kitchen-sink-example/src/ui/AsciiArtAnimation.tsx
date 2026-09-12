@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { useEffect, useRef } from "react";
 
 const CHARS = [" ", ".", "·", "▪", "▫", "○"] as const;
@@ -336,8 +337,8 @@ export function AsciiArtAnimation() {
         height: "320px",
         minHeight: "320px",
         maxHeight: "350px",
-        background: "#1d1d1d",
-        color: "#f2efe6",
+        background: "#1C1D1E",
+        color: "#EEEFF1",
         overflow: "hidden",
         borderRadius: "12px",
         border: "1px solid color-mix(in srgb, var(--border) 75%, transparent)",

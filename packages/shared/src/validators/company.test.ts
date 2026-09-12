@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { describe, expect, it } from "vitest";
 import {
   createCompanySchema,
@@ -10,7 +11,7 @@ describe("company schemas without the retired settings", () => {
   it("strips brandColor and attachmentMaxBytes from a create payload", () => {
     const parsed = createCompanySchema.parse({
       name: "Acme",
-      brandColor: "#123456",
+      brandColor: "#003166",
       attachmentMaxBytes: 25_000_000,
     });
 
@@ -22,7 +23,7 @@ describe("company schemas without the retired settings", () => {
   it("strips brandColor and attachmentMaxBytes from an update payload", () => {
     const parsed = updateCompanySchema.parse({
       description: "Updated",
-      brandColor: "#123456",
+      brandColor: "#003166",
       attachmentMaxBytes: 25_000_000,
     });
 
@@ -34,7 +35,7 @@ describe("company schemas without the retired settings", () => {
   it("rejects brandColor on the strict branding schema", () => {
     const result = updateCompanyBrandingSchema.safeParse({
       name: "Acme",
-      brandColor: "#123456",
+      brandColor: "#003166",
     });
 
     expect(result.success).toBe(false);
@@ -61,7 +62,7 @@ describe("portability company manifest tolerance", () => {
       path: "company.md",
       name: "Acme",
       description: null,
-      brandColor: "#5c5fff",
+      brandColor: "#2179DC",
       logoPath: null,
       attachmentMaxBytes: 25_000_000,
       requireBoardApprovalForNewAgents: false,

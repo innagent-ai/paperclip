@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 // @vitest-environment jsdom
 
 import { createRoot } from "react-dom/client";
@@ -1054,8 +1055,8 @@ describe("CompanyEnvironments — test provider button", () => {
     expect(xtermMocks.terminalInstances[0].options.customGlyphs).toBe(true);
     expect(xtermMocks.terminalInstances[0].options.letterSpacing).toBe(0);
     expect(xtermMocks.terminalInstances[0].options.theme).toMatchObject({
-      cursor: "#22d3ee",
-      cursorAccent: "#020617",
+      cursor: "#8EC0FF",
+      cursorAccent: "#000718",
     });
     expect(String(xtermMocks.terminalInstances[0].options.fontFamily)).toContain("Nerd Font");
 

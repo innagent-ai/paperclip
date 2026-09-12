@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 # Component primitives
 
 Copy these snippets directly into your SVG. Each primitive is wrapped in a `<g transform="translate(0, 0)">` so you can position it by changing the translate values. All sizes follow the 8px grid and the type scale defined in `grid-system.md`.
@@ -184,14 +185,14 @@ Copy these snippets directly into your SVG. Each primitive is wrapped in a `<g t
 <g transform="translate(0,0)">
   <rect width="1280" height="64" />
   <!-- logo placeholder -->
-  <rect x="24" y="16" width="32" height="32" rx="4" fill="#e6e6e6" />
+  <rect x="24" y="16" width="32" height="32" rx="4" fill="#E5E6E8" />
   <!-- nav items -->
   <text x="80" y="40" font-size="14" stroke="none" fill="#000">Dashboard</text>
   <text x="184" y="40" font-size="14" stroke="none" fill="#666">Projects</text>
   <text x="272" y="40" font-size="14" stroke="none" fill="#666">Reports</text>
   <text x="352" y="40" font-size="14" stroke="none" fill="#666">Settings</text>
   <!-- right side: avatar -->
-  <circle cx="1240" cy="32" r="16" fill="#e6e6e6" />
+  <circle cx="1240" cy="32" r="16" fill="#E5E6E8" />
 </g>
 ```
 
@@ -202,7 +203,7 @@ Copy these snippets directly into your SVG. Each primitive is wrapped in a `<g t
   <rect width="240" height="800" />
   <text x="24" y="40" font-size="20" font-weight="600" stroke="none" fill="#000">App</text>
   <!-- active item -->
-  <rect x="0" y="80" width="240" height="40" fill="#e6e6e6" />
+  <rect x="0" y="80" width="240" height="40" fill="#E5E6E8" />
   <text x="24" y="105" font-size="14" stroke="none" fill="#000">Dashboard</text>
   <!-- inactive items -->
   <text x="24" y="153" font-size="14" stroke="none" fill="#666">Projects</text>
@@ -287,7 +288,7 @@ Copy these snippets directly into your SVG. Each primitive is wrapped in a `<g t
 ```svg
 <g transform="translate(0,0)">
   <rect width="800" height="56" />
-  <circle cx="32" cy="28" r="16" fill="#e6e6e6" />
+  <circle cx="32" cy="28" r="16" fill="#E5E6E8" />
   <text x="64" y="24" font-size="14" font-weight="600" stroke="none" fill="#000">Primary text</text>
   <text x="64" y="40" font-size="12" stroke="none" fill="#666">Secondary text</text>
   <polyline points="772,20 780,28 772,36" fill="none" />
@@ -299,7 +300,7 @@ Copy these snippets directly into your SVG. Each primitive is wrapped in a `<g t
 ```svg
 <g transform="translate(0,0)">
   <!-- header -->
-  <rect width="800" height="48" fill="#f4f4f4" />
+  <rect width="800" height="48" fill="#F3F4F6" />
   <text x="16" y="30" font-size="12" font-weight="600" stroke="none" fill="#000">Name</text>
   <text x="280" y="30" font-size="12" font-weight="600" stroke="none" fill="#000">Status</text>
   <text x="480" y="30" font-size="12" font-weight="600" stroke="none" fill="#000">Updated</text>
@@ -351,7 +352,7 @@ Copy these snippets directly into your SVG. Each primitive is wrapped in a `<g t
 
 ```svg
 <g transform="translate(0,0)">
-  <rect width="240" height="160" fill="#e6e6e6" />
+  <rect width="240" height="160" fill="#E5E6E8" />
   <line x1="0" y1="0" x2="240" y2="160" stroke="#666" />
   <line x1="240" y1="0" x2="0" y2="160" stroke="#666" />
 </g>
@@ -361,7 +362,7 @@ Copy these snippets directly into your SVG. Each primitive is wrapped in a `<g t
 
 ```svg
 <g transform="translate(0,0)">
-  <circle cx="24" cy="24" r="24" fill="#e6e6e6" />
+  <circle cx="24" cy="24" r="24" fill="#E5E6E8" />
   <line x1="7" y1="7" x2="41" y2="41" stroke="#666" />
   <line x1="41" y1="7" x2="7" y2="41" stroke="#666" />
 </g>
@@ -371,7 +372,7 @@ Copy these snippets directly into your SVG. Each primitive is wrapped in a `<g t
 
 ```svg
 <g transform="translate(0,0)">
-  <rect width="320" height="180" fill="#e6e6e6" />
+  <rect width="320" height="180" fill="#E5E6E8" />
   <line x1="0" y1="0" x2="320" y2="180" stroke="#666" />
   <line x1="320" y1="0" x2="0" y2="180" stroke="#666" />
   <circle cx="160" cy="90" r="32" fill="#fff" />
@@ -476,7 +477,7 @@ Use these for callouts and reviewer notes. Render them in a final `<g data-regio
 
 - **Text with halo:** forgetting `stroke="none"` on `<text>`. The text inherits the parent stroke.
 - **Off-grid coordinates:** values like `x="37"` instead of `x="40"`. Snap everything to multiples of 8.
-- **Solid fills sneaking in:** anything other than `#fff`, `#e6e6e6`, `#f4f4f4`, or `#000` is a mistake.
+- **Solid fills sneaking in:** anything other than `#fff`, `#E5E6E8`, `#F3F4F6`, or `#000` is a mistake.
 - **Multiple typefaces:** stick to one font-family across the whole file.
 - **Annotation colour bleeding into UI:** `#d33` only ever appears inside the annotation `<g>`.
 - **Missing `viewBox`:** without it, the SVG won't scale when embedded in different containers.
