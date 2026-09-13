@@ -69,3 +69,6 @@ tests/storybook-visual/playwright-report/
 .superpowers/
 .claude/worktrees/
 .herenow
+
+# build da UI (gerado pelo atualizar-fork.sh; nao versionar)
+ui/ui-dist/
