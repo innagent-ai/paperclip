@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import type { Agent, FeedbackVote } from "@paperclipai/shared";
 import type { LiveRunForIssue } from "../api/heartbeats";
 import type { InlineEntityOption } from "../components/InlineEntitySelector";
@@ -88,7 +89,7 @@ export const issueChatUxMentions: MentionOption[] = [
     name: "Paperclip Board UI",
     kind: "project",
     projectId: "project-1",
-    projectColor: "#0f766e",
+    projectColor: "#35726C",
   },
 ];
 

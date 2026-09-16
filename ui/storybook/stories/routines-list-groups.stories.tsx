@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
@@ -10,8 +11,8 @@ import {
 } from "@/components/RoutineList";
 
 const projectById = new Map<string, RoutineListProjectSummary>([
-  ["p1", { name: "Board UI", color: "#6366f1" }],
-  ["p2", { name: "Growth", color: "#10b981" }],
+  ["p1", { name: "Board UI", color: "#237BDE" }],
+  ["p2", { name: "Growth", color: "#52B388" }],
 ]);
 const agentById = new Map<string, RoutineListAgentSummary>([
   ["a1", { name: "CodexCoder", icon: null }],

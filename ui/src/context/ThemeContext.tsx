@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import {
   createContext,
   useCallback,
@@ -17,7 +18,7 @@ interface ThemeContextValue {
 }
 
 const THEME_STORAGE_KEY = "paperclip.theme";
-const DARK_THEME_COLOR = "#18181b";
+const DARK_THEME_COLOR = "#18181A";
 const LIGHT_THEME_COLOR = "#ffffff";
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 

@@ -151,7 +151,7 @@ describe("AuthPage", () => {
     const { root } = await mount();
 
     const createOne = Array.from(container.querySelectorAll("button")).find(
-      (button) => button.textContent === "Create one",
+      (button) => button.textContent === "Criar agora",
     );
     expect(createOne).not.toBeNull();
 

@@ -1,14 +1,14 @@
 {
   "id": "/",
-  "name": "Paperclip",
-  "short_name": "Paperclip",
-  "description": "AI-powered project management and agent coordination platform",
+  "name": "InnTeam",
+  "short_name": "InnTeam",
+  "description": "Operação do hotel — InnTeam.",
   "start_url": "/",
   "scope": "/",
   "display": "browser",
   "orientation": "any",
-  "theme_color": "#18181b",
-  "background_color": "#18181b",
+  "theme_color": "#171A1F",
+  "background_color": "#171A1F",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

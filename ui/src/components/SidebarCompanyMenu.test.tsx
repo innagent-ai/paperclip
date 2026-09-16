@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 // @vitest-environment jsdom
 
 import type { ReactNode } from "react";
@@ -61,21 +62,21 @@ vi.mock("@/context/CompanyContext", () => ({
         id: "company-1",
         issuePrefix: "PAP",
         name: "Acme Labs",
-        brandColor: "#3366ff",
+        brandColor: "#1D77D9",
         status: "active",
       },
       {
         id: "company-2",
         issuePrefix: "STR",
         name: "Strata",
-        brandColor: "#36a269",
+        brandColor: "#559D72",
         status: "active",
       },
       {
         id: "company-3",
         issuePrefix: "ANA",
         name: "Anachronist Wiki",
-        brandColor: "#a36a21",
+        brandColor: "#768100",
         status: "active",
       },
     ],
@@ -83,7 +84,7 @@ vi.mock("@/context/CompanyContext", () => ({
       id: "company-1",
       issuePrefix: "PAP",
       name: "Acme Labs",
-      brandColor: "#3366ff",
+      brandColor: "#1D77D9",
       logoUrl: "/api/assets/logo-asset-1/content",
       status: "active",
     },

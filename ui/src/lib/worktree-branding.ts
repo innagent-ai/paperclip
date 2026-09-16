@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { READABLE_TEXT_LIGHT, READABLE_TEXT_DARK } from "./color-contrast";
 
 export type WorktreeUiBranding = {

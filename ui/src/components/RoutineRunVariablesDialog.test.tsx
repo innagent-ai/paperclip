@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 // @vitest-environment jsdom
 
 import { flushSync } from "react-dom";
@@ -80,7 +81,7 @@ function createProject(): Project {
     status: "in_progress",
     leadAgentId: null,
     targetDate: null,
-    color: "#22c55e",
+    color: "#5ABE73",
     icon: null,
     env: null,
     pauseReason: null,

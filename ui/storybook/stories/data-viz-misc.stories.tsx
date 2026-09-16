@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { useEffect, useMemo, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { HeartbeatRun, Issue } from "@paperclipai/shared";
@@ -556,10 +557,10 @@ function SwipeToArchiveDemo({ disabled = false }: { disabled?: boolean }) {
 
 function CompanyPatternIconMatrix() {
   const companies = [
-    { name: "Paperclip Storybook", color: "#0f766e" },
-    { name: "Research Bureau", color: "#2563eb" },
-    { name: "Launch Ops", color: "#c2410c" },
-    { name: "Atlas Finance", color: "#7c3aed" },
+    { name: "Paperclip Storybook", color: "#35726C" },
+    { name: "Research Bureau", color: "#106FD0" },
+    { name: "Launch Ops", color: "#707B00" },
+    { name: "Atlas Finance", color: "#0D6DCF" },
   ];
   const sizes = ["h-8 w-8 text-xs", "h-11 w-11 text-base", "h-16 w-16 text-xl", "h-24 w-24 text-3xl"];
 

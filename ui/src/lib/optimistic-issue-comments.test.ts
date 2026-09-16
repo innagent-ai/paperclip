@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { Issue } from "@paperclipai/shared";
 import {
@@ -551,7 +552,7 @@ describe("optimistic issue comments", () => {
             id: "label-1",
             companyId: "company-1",
             name: "One",
-            color: "#111111",
+            color: "#101112",
             createdAt: new Date("2026-03-28T14:00:00.000Z"),
             updatedAt: new Date("2026-03-28T14:00:00.000Z"),
           },
@@ -559,7 +560,7 @@ describe("optimistic issue comments", () => {
             id: "label-2",
             companyId: "company-1",
             name: "Two",
-            color: "#222222",
+            color: "#212223",
             createdAt: new Date("2026-03-28T14:00:00.000Z"),
             updatedAt: new Date("2026-03-28T14:00:00.000Z"),
           },

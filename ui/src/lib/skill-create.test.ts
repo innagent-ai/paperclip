@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { describe, expect, it } from "vitest";
 import type { CompanySkillDetail } from "@paperclipai/shared";
 import {
@@ -83,11 +84,11 @@ describe("skill create helpers", () => {
   });
 
   it("builds fork drafts from the source skill metadata", () => {
-    const draft = buildForkSkillDraft(skill({ color: "#123456", folderId: "bundled-folder" }));
+    const draft = buildForkSkillDraft(skill({ color: "#003166", folderId: "bundled-folder" }));
 
     expect(draft.name).toBe("Demo Skill Fork");
     expect(draft.slug).toBe("demo-skill-fork");
-    expect(draft.color).toBe("#123456");
+    expect(draft.color).toBe("#003166");
     expect(draft.categories).toEqual(["engineering", "review"]);
     expect(draft.forkedFromSkillId).toBe("skill-1");
     expect(draft.forkedFromName).toBe("Demo Skill");

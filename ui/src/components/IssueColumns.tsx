@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import type { ReactNode } from "react";
 import { deriveOriginatingActor, type Issue } from "@paperclipai/shared";
 import { Columns3 } from "lucide-react";
@@ -361,7 +362,7 @@ export function InboxIssueTrailingColumns({
         if (column === "project") {
           if (projectName) {
             // token-extraction: allowlisted — accentColor also feeds pickTextColorForPillBg() contrast math; a var() string can't be parsed as a hex color there.
-            const accentColor = projectColor ?? "#64748b";
+            const accentColor = projectColor ?? "#1571D3";
             return (
               <span
                 key={column}
