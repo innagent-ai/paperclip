@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { readFileSync } from "node:fs";
 import type { PaperclipPluginManifestV1 } from "@paperclipai/plugin-sdk";
 import { DEFAULT_AGENT_INSTRUCTION_FILES, DEFAULT_AGENT_INSTRUCTIONS } from "./templates.js";
@@ -193,7 +194,7 @@ const manifest: PaperclipPluginManifestV1 = {
       displayName: "LLM Wiki",
       description: "Plugin-managed inspection area for LLM Wiki ingest, query, lint, and maintenance operation issues.",
       status: "in_progress",
-      color: "#2563eb"
+      color: "#106FD0"
     }
   ],
   skills: [

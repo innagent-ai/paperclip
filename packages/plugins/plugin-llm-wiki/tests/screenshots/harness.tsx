@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { useEffect, useState } from "react";
 import { SettingsPage, SidebarLink, WikiPage, WikiRouteSidebar } from "../../src/ui/index.js";
 import type {
@@ -291,7 +292,7 @@ const DISTILLATION_CURSOR = {
   scopeKey: "prj-control-plane",
   projectId: "prj-control-plane",
   projectName: "Control plane",
-  projectColor: "#2563eb",
+  projectColor: "#106FD0",
   rootIssueId: null,
   rootIssueIdentifier: null,
   rootIssueTitle: null,

@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import { useEffect, useMemo, useState, type CSSProperties, type FormEvent, type ReactNode } from "react";
 import {
   AssigneePicker,
@@ -189,24 +190,24 @@ function toneButtonStyle(tone: "success" | "warn" | "info"): CSSProperties {
   if (tone === "success") {
     return {
       ...buttonStyle,
-      background: "color-mix(in srgb, #16a34a 18%, transparent)",
-      borderColor: "color-mix(in srgb, #16a34a 60%, var(--border))",
-      color: "#86efac",
+      background: "color-mix(in srgb, #489D5C 18%, transparent)",
+      borderColor: "color-mix(in srgb, #489D5C 60%, var(--border))",
+      color: "#9EE9B7",
     };
   }
   if (tone === "warn") {
     return {
       ...buttonStyle,
-      background: "color-mix(in srgb, #d97706 18%, transparent)",
-      borderColor: "color-mix(in srgb, #d97706 60%, var(--border))",
-      color: "#fcd34d",
+      background: "color-mix(in srgb, #919E00 18%, transparent)",
+      borderColor: "color-mix(in srgb, #919E00 60%, var(--border))",
+      color: "#D3E53E",
     };
   }
   return {
     ...buttonStyle,
-    background: "color-mix(in srgb, #2563eb 18%, transparent)",
-    borderColor: "color-mix(in srgb, #2563eb 60%, var(--border))",
-    color: "#93c5fd",
+    background: "color-mix(in srgb, #106FD0 18%, transparent)",
+    borderColor: "color-mix(in srgb, #106FD0 60%, var(--border))",
+    color: "#95C4FF",
   };
 }
 
@@ -725,12 +726,12 @@ function KitchenSinkPageWidgets({ context }: { context: PluginPageProps["context
                 ...subtleCardStyle,
                 borderColor:
                   quickActionStatus.tone === "error"
-                    ? "color-mix(in srgb, #dc2626 45%, var(--border))"
+                    ? "color-mix(in srgb, #D53537 45%, var(--border))"
                     : quickActionStatus.tone === "warn"
-                      ? "color-mix(in srgb, #d97706 45%, var(--border))"
+                      ? "color-mix(in srgb, #919E00 45%, var(--border))"
                       : quickActionStatus.tone === "success"
-                        ? "color-mix(in srgb, #16a34a 45%, var(--border))"
-                        : "color-mix(in srgb, #2563eb 45%, var(--border))",
+                        ? "color-mix(in srgb, #489D5C 45%, var(--border))"
+                        : "color-mix(in srgb, #106FD0 45%, var(--border))",
               }}
             >
               <div style={{ fontSize: "12px", fontWeight: 600 }}>{quickActionStatus.title}</div>
@@ -878,7 +879,7 @@ function KitchenSinkIssueCrudDemo({ context }: { context: PluginPageProps["conte
             </button>
           </div>
           {loading ? <div style={mutedTextStyle}>Loading issues…</div> : null}
-          {error ? <div style={{ ...mutedTextStyle, color: "var(--destructive, #dc2626)" }}>{error}</div> : null}
+          {error ? <div style={{ ...mutedTextStyle, color: "var(--destructive, #D53537)" }}>{error}</div> : null}
           <div style={{ display: "grid", gap: "10px" }}>
             {issues.map((issue) => {
               const draft = drafts[issue.id] ?? { title: issue.title, status: issue.status };
@@ -1034,7 +1035,7 @@ function KitchenSinkCompanyCrudDemo({ context }: { context: PluginPageProps["con
         </button>
       </div>
       {loading ? <div style={mutedTextStyle}>Loading companies…</div> : null}
-      {error ? <div style={{ ...mutedTextStyle, color: "var(--destructive, #dc2626)" }}>{error}</div> : null}
+      {error ? <div style={{ ...mutedTextStyle, color: "var(--destructive, #D53537)" }}>{error}</div> : null}
       <div style={{ display: "grid", gap: "10px" }}>
         {demoCompanies.map((company) => {
           const draft = drafts[company.id] ?? { name: company.name, status: "active" };
@@ -1253,7 +1254,7 @@ function KitchenSinkHostIntegrationDemo({ context }: { context: PluginPageProps[
               </button>
             </div>
             {loading ? <div style={mutedTextStyle}>Loading run data…</div> : null}
-            {error ? <div style={{ ...mutedTextStyle, color: "var(--destructive, #dc2626)" }}>{error}</div> : null}
+            {error ? <div style={{ ...mutedTextStyle, color: "var(--destructive, #D53537)" }}>{error}</div> : null}
             <MiniList
               items={liveRuns}
               empty="No live runs right now."

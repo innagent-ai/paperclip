@@ -1,3 +1,4 @@
+// innagent: status derivados dos tokens da marca
 import type { KvStateSnapshot } from "./store.js";
 
 export interface RenderOptions {
@@ -46,16 +47,16 @@ export function renderStatePage(snapshot: KvStateSnapshot, options: RenderOption
   :root { color-scheme: light dark; }
   body { font: 14px/1.5 system-ui, sans-serif; margin: 0; padding: 2rem; }
   h1 { font-size: 1.25rem; margin: 0 0 0.25rem; }
-  .meta { color: #6b7280; margin: 0 0 1.5rem; }
+  .meta { color: #717273; margin: 0 0 1.5rem; }
   .meta strong { color: inherit; }
   table { border-collapse: collapse; width: 100%; max-width: 960px; }
-  th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
-  th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: #6b7280; }
+  th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid #E6E7E9; vertical-align: top; }
+  th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: #717273; }
   td.key { font-weight: 600; }
   td.value { white-space: pre-wrap; word-break: break-word; }
-  td.updated { color: #6b7280; white-space: nowrap; }
-  tr.empty td { color: #6b7280; font-style: italic; }
-  code { background: rgba(127,127,127,0.18); padding: 0.05rem 0.3rem; border-radius: 4px; }
+  td.updated { color: #717273; white-space: nowrap; }
+  tr.empty td { color: #717273; font-style: italic; }
+  code { background: rgba(126,127,129,0.18); padding: 0.05rem 0.3rem; border-radius: 4px; }
 </style>
 </head>
 <body>
